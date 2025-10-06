@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VierCycle — Convert Your Bike. Go Electric. Go Green.</title>
+    <style>
+      :root {
+        --brand: #ffca05;
+        --text: #1f2937; /* gray-800 */
+        --muted: #6b7280; /* gray-500 */
+        --bg: #ffffff;
+        --bg-alt: #f9fafb; /* gray-50 */
+        --black: #000;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+          Cantarell, Noto Sans, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.6;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-weight: 700;
+        transition: 0.2s ease-in-out;
+      }
+      .btn-primary {
+        background: var(--brand);
+        color: #000;
+      }
+      .btn-primary:hover {
+        filter: brightness(0.95);
+      }
+      .btn-outline {
+        border: 2px solid var(--brand);
+        color: var(--brand);
+      }
+      .btn-outline:hover {
+        background: var(--brand);
+        color: #000;
+      }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.2;
+        margin: 0 0 12px;
+      }
+      h2.section-title {
+        font-size: 32px;
+        text-transform: uppercase;
+        color: var(--brand);
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      /* Hero */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: url("https://images.unsplash.com/photo-1600962815705-1e6a7d34ddc1?auto=format&fit=crop&w=1600&q=80")
+          center/cover;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+      }
+      .hero-inner {
+        position: relative;
+        text-align: center;
+        max-width: 780px;
+        padding: 0 16px;
+      }
+      .hero h1 {
+        font-size: 44px;
+        color: var(--brand);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 10px;
+      }
+      .hero p {
+        color: #e5e7eb;
+        font-size: 18px;
+        margin: 12px 0 24px;
+      }
+      .hero .actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      /* Sections */
+      section {
+        padding: 80px 0;
+      }
+      .alt {
+        background: var(--bg-alt);
+      }
+      /* Why Convert */
+      .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .card {
+        text-align: center;
+        padding: 18px;
+      }
+      .card h3 {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+      .card p {
+        color: var(--muted);
+      }
+      /* How it works */
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
+        text-align: center;
+      }
+      .step-num {
+        width: 64px;
+        height: 64px;
+        border-radius: 999px;
+        background: var(--brand);
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 800;
+        margin: 0 auto 12px;
+      }
+      /* Featured */
+      .grid-3.cards {
+        gap: 24px;
+      }
+      .product {
+        background: #f3f4f6;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        transition: 0.2s;
+      }
+      .product:hover {
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+      }
+      .product .body {
+        padding: 20px;
+        text-align: center;
+      }
+      .product h3 {
+        color: var(--brand);
+        font-size: 22px;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      /* Press */
+      .press-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .press-item {
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        transition: 0.2s;
+      }
+      .press-item:hover {
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+      }
+      .press-item .body {
+        padding: 16px;
+      }
+      .press-item h3 {
+        color: var(--brand);
+        font-size: 18px;
+        margin-bottom: 6px;
+      }
+      /* Videos */
+      .video-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .video {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        transition: 0.2s;
+      }
+      .video:hover {
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+      }
+      .video .thumb {
+        position: relative;
+      }
+      .video .thumb::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+      }
+      .play {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .play .dot {
+        width: 56px;
+        height: 56px;
+        border-radius: 999px;
+        background: var(--brand);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .play svg {
+        width: 26px;
+        height: 26px;
+        fill: #000;
+      }
+      .video .body {
+        padding: 14px;
+      }
+      .video h3 {
+        color: var(--brand);
+        font-size: 18px;
+      }
+      /* Dealer */
+      .dealer {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        align-items: center;
+      }
+      .field {
+        padding: 12px 14px;
+        border: 1px solid #d1d5db;
+        border-radius: 12px;
+        font-size: 16px;
+        width: 100%;
+      }
+      .field:focus {
+        outline: 2px solid var(--brand);
+      }
+      .btn-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .map {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      }
+      .map .badge {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 13px;
+      }
+      /* Testimonials */
+      .testi-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .testi {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        padding: 24px;
+      }
+      .testi p.name {
+        color: var(--brand);
+        font-weight: 700;
+        margin: 10px 0 0;
+      }
+      /* Footer */
+      footer {
+        background: #000;
+        color: #d1d5db;
+        padding: 48px 0;
+      }
+      footer h4 {
+        color: var(--brand);
+        margin: 0 0 10px;
+      }
+      footer a:hover {
+        color: #fff;
+      }
+      footer .cols {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      footer .copy {
+        border-top: 1px solid #374151;
+        margin-top: 24px;
+        padding-top: 14px;
+        text-align: center;
+        font-size: 14px;
+      }
+      /* Responsive */
+      @media (min-width: 640px) {
+        .grid-3 {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .steps {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .press-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .video-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .dealer {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .testi-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        footer .cols {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .hero h1 {
+          font-size: 56px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Convert Your Bike. Go Electric. Go Green.</h1>
+        <p>
+          VierCycle empowers riders to transform any bicycle into an electric
+          bike — fast, affordable, and sustainable.
+        </p>
+        <div class="actions">
+          <a href="#how" class="btn btn-primary">Learn How It Works</a>
+          <a href="#featured" class="btn btn-outline">Shop Kits</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Convert -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">Why Convert?</h2>
+        <div class="grid-3">
+          <div class="card">
+            <img
+              src="https://img.icons8.com/ios-filled/100/FFCA05/money-bag.png"
+              alt="Save Money"
+            />
+            <h3>Save Money</h3>
+            <p>Convert your existing bike at half the price of a new eBike.</p>
+          </div>
+          <div class="card">
+            <img
+              src="https://img.icons8.com/ios-filled/100/FFCA05/earth-planet.png"
+              alt="Go Green"
+            />
+            <h3>Go Green</h3>
+            <p>Reduce CO₂ emissions and support a circular economy.</p>
+          </div>
+          <div class="card">
+            <img
+              src="https://img.icons8.com/ios-filled/100/FFCA05/bicycle.png"
+              alt="Ride Further"
+            />
+            <h3>Ride Further</h3>
+            <p>
+              Boost your range and tackle hills easily with electric assist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how" class="alt">
+      <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+          <div>
+            <div class="step-num">1</div>
+            <h3>Choose Your Kit</h3>
+            <p class="muted">Pick the best kit for your bike and lifestyle.</p>
+          </div>
+          <div>
+            <div class="step-num">2</div>
+            <h3>Install Easily</h3>
+            <p class="muted">
+              Install in 10 minutes — no special tools needed.
+            </p>
+          </div>
+          <div>
+            <div class="step-num">3</div>
+            <h3>Ride & Explore</h3>
+            <p class="muted">Enjoy smooth rides and longer adventures.</p>
+          </div>
+          <div>
+            <div class="step-num">4</div>
+            <h3>Get Support</h3>
+            <p class="muted">Reliable warranty and local support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Kits -->
+    <section id="featured">
+      <div class="container">
+        <h2 class="section-title">Featured Kits</h2>
+        <p class="muted" style="text-align: center; margin: -12px 0 28px">
+          Top-selling conversion kits for every type of rider.
+        </p>
+        <div class="grid-3 cards">
+          <article class="product">
+            <img
+              src="https://images.unsplash.com/photo-1595433707802-6b2626ef8b1f?auto=format&fit=crop&w=1200&q=80"
+              alt="Stella Kit"
+            />
+            <div class="body">
+              <h3>Stella Kit</h3>
+              <p class="muted">
+                Plug-and-play • 250 W • 36 V • up to 60 km range
+              </p>
+              <a href="#" class="btn btn-primary">View Details</a>
+            </div>
+          </article>
+          <article class="product">
+            <img
+              src="https://images.unsplash.com/photo-1595433707802-6b2626ef8b1f?auto=format&fit=crop&w=1200&q=80"
+              alt="Urban Kit"
+            />
+            <div class="body">
+              <h3>Urban Kit</h3>
+              <p class="muted">
+                Plug-and-play • 250 W • 36 V • up to 60 km range
+              </p>
+              <a href="#" class="btn btn-primary">View Details</a>
+            </div>
+          </article>
+          <article class="product">
+            <img
+              src="https://images.unsplash.com/photo-1595433707802-6b2626ef8b1f?auto=format&fit=crop&w=1200&q=80"
+              alt="Touring Kit"
+            />
+            <div class="body">
+              <h3>Touring Kit</h3>
+              <p class="muted">
+                Plug-and-play • 250 W • 36 V • up to 60 km range
+              </p>
+              <a href="#" class="btn btn-primary">View Details</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Reviews -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">Video Reviews</h2>
+        <div class="video-grid">
+          <a
+            class="video"
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="thumb">
+              <img
+                src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                alt="Unboxing the Stella Kit"
+              />
+              <div class="play">
+                <div class="dot">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                </div>
+              </div>
+            </div>
+            <div class="body">
+              <h3>Unboxing the Stella Kit</h3>
+              <p class="muted">Watch on YouTube →</p>
+            </div>
+          </a>
+          <a
+            class="video"
+            href="https://www.youtube.com/watch?v=oHg5SJYRHA0"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="thumb">
+              <img
+                src="https://img.youtube.com/vi/oHg5SJYRHA0/hqdefault.jpg"
+                alt="10-Min Install & First Ride"
+              />
+              <div class="play">
+                <div class="dot">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                </div>
+              </div>
+            </div>
+            <div class="body">
+              <h3>10-Min Install & First Ride</h3>
+              <p class="muted">Watch on YouTube →</p>
+            </div>
+          </a>
+          <a
+            class="video"
+            href="https://www.youtube.com/watch?v=9bZkp7q19f0"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="thumb">
+              <img
+                src="https://img.youtube.com/vi/9bZkp7q19f0/hqdefault.jpg"
+                alt="Range Test & Hill Climb"
+              />
+              <div class="play">
+                <div class="dot">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                </div>
+              </div>
+            </div>
+            <div class="body">
+              <h3>Range Test & Hill Climb</h3>
+              <p class="muted">Watch on YouTube →</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Press -->
+    <section class="alt">
+      <div class="container">
+        <h2 class="section-title">VierCycle In The Press</h2>
+        <div class="press-grid">
+          <a
+            class="press-item"
+            href="https://thanhnien.vn"
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1593642532973-d31b6557fa68?auto=format&fit=crop&w=1200&q=80"
+              alt="Thanh Nien"
+            />
+            <div class="body">
+              <h3>VierCycle’s eBike Solution Featured on Thanh Niên</h3>
+              <p class="muted">Read more →</p>
+            </div>
+          </a>
+          <a class="press-item" href="#" target="_blank" rel="noopener">
+            <img
+              src="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1200&q=80"
+              alt="Article"
+            />
+            <div class="body">
+              <h3>Vietnam Startup Scene Highlights VierCycle</h3>
+              <p class="muted">Read more →</p>
+            </div>
+          </a>
+          <a class="press-item" href="#" target="_blank" rel="noopener">
+            <img
+              src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80"
+              alt="News"
+            />
+            <div class="body">
+              <h3>Sustainable Mobility Spotlight: VierCycle</h3>
+              <p class="muted">Read more →</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">Riders Love VierCycle</h2>
+        <div class="testi-grid">
+          <div class="testi">
+            <p class="italic">
+              “The kit transformed my daily commute — no more sweating in
+              traffic!”
+            </p>
+            <p class="name">Minh, Ho Chi Minh City</p>
+          </div>
+          <div class="testi">
+            <p class="italic">
+              “Installation was super easy. I was riding in 15 minutes.”
+            </p>
+            <p class="name">Anna, Da Lat</p>
+          </div>
+          <div class="testi">
+            <p class="italic">
+              “Great range, smooth assist, and amazing support.”
+            </p>
+            <p class="name">Luca, EU Partner</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dealer / Contact -->
+    <section class="alt">
+      <div class="container dealer">
+        <div>
+          <h2 class="section-title" style="text-align: left">
+            Find a Dealer Worldwide
+          </h2>
+          <p class="muted" style="margin-top: -18px; margin-bottom: 16px">
+            Looking for local support, test rides, or installation? Locate an
+            authorized VierCycle dealer near you — or partner with us to bring
+            sustainable mobility to your city.
+          </p>
+          <div
+            style="display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0"
+          >
+            <select class="field">
+              <option selected disabled>Choose country</option>
+              <option>Vietnam</option>
+              <option>Thailand</option>
+              <option>Philippines</option>
+              <option>Singapore</option>
+              <option>Malaysia</option>
+              <option>EU</option>
+              <option>USA</option>
+            </select>
+            <input class="field" type="text" placeholder="City / Region" />
+          </div>
+          <div class="btn-row">
+            <a href="#" class="btn btn-primary">Search Dealers</a>
+            <a href="#" class="btn btn-outline">Become a Dealer</a>
+          </div>
+        </div>
+        <div class="map">
+          <img
+            src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1600&q=80"
+            alt="World map"
+          />
+          <div class="badge">Global Network • 2025</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="cols">
+          <div>
+            <img
+              src="/logo.png"
+              alt="VierCycle Logo"
+              style="height: 40px; margin-bottom: 12px"
+            />
+            <p>Convert bikes • Ride electric • Go green</p>
+          </div>
+          <div>
+            <h4>Shop</h4>
+            <p>
+              <a href="#">Conversion Kits</a><br />
+              <a href="#">Accessories</a><br />
+              <a href="#">Spare Parts</a>
+            </p>
+          </div>
+          <div>
+            <h4>Support</h4>
+            <p>
+              <a href="#">Installation Guides</a><br />
+              <a href="#">Warranty &amp; Service</a><br />
+              <a href="#">FAQs</a>
+            </p>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <p>
+              <a href="#">Facebook</a><br />
+              <a href="#">TikTok</a><br />
+              <a href="#">Zalo</a>
+            </p>
+          </div>
+        </div>
+        <div class="copy">© 2025 VierCycle. All rights reserved.</div>
+      </div>
+    </footer>
+  </body>
+</html>
