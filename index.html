@@ -72,6 +72,46 @@
         text-align: center;
         margin-bottom: 40px;
       }
+      /* NAV */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 1);
+        backdrop-filter: saturate(180%) blur(6px);
+        color: #000000;
+      }
+      .nav .inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 24px;
+      }
+      .nav .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .nav .brand img {
+        height: 50px;
+      }
+      .nav .menu {
+        display: none;
+        gap: 24px;
+        font-weight: 600;
+      }
+      .nav a:hover {
+        color: var(--brand);
+      }
+      .nav .hamburger {
+        display: inline-flex;
+        padding: 8px;
+        border-radius: 8px;
+      }
       /* Hero */
       .hero {
         position: relative;
@@ -339,6 +379,12 @@
       }
       /* Responsive */
       @media (min-width: 640px) {
+        .nav .menu {
+          display: flex;
+        }
+        .nav .hamburger {
+          display: none;
+        }
         .grid-3 {
           grid-template-columns: repeat(3, 1fr);
         }
@@ -367,6 +413,38 @@
     </style>
   </head>
   <body>
+    <!-- NAV -->
+    <header class="nav">
+      <div class="inner">
+        <a href="#" class="brand">
+          <img src="logo.png" alt="VierCycle" />
+        </a>
+        <nav class="menu" aria-label="Primary">
+          <a href="#why">Why Convert</a>
+          <a href="#how">How It Works</a>
+          <a href="#featured">Kits</a>
+          <a href="#press">Press</a>
+          <a href="#videos">Videos</a>
+          <a href="#dealer">Find Dealer</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="hamburger" aria-label="Menu">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            stroke="#fff"
+            fill="none"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
     <!-- Hero -->
     <section class="hero">
       <div class="hero-inner">
