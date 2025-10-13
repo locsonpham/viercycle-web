@@ -258,7 +258,7 @@
         <div class="grid-3 pricing">
           <div class="card">
             <h3>Cơ bản</h3>
-            <p class="price"><span>$</span>399<span>/kit</span></p>
+            <p class="price"><span>đ</span>3,990,000<span>/kit</span></p>
             <ul class="list">
               <li>Động cơ 250W</li>
               <li>AIO Controller</li>
@@ -271,7 +271,7 @@
           <div class="card card-featured">
             <div class="badge">Best Value</div>
             <h3>Tiêu chuẩn</h3>
-            <p class="price"><span>$</span>549<span>/kit</span></p>
+            <p class="price"><span>đ</span>4,990,000<span>/kit</span></p>
             <ul class="list">
               <li>Mọi thứ Cơ bản</li>
               <li>Vành và căm tùy chọn</li>
@@ -281,7 +281,7 @@
 
           <div class="card">
             <h3>Nâng cấp</h3>
-            <p class="price"><span>$</span>699<span>/kit</span></p>
+            <p class="price"><span>đ</span>5,990,000<span>/kit</span></p>
             <ul class="list">
               <li>Mọi thứ trong Tiêu chuẩn</li>
               <li>Bảo hành mở rộng</li>
@@ -291,6 +291,96 @@
         </div>
       </div>
     </section>
+
+    <!-- Video Reviews -->
+    <section id="reviews" class="section section-alt">
+      <div class="container">
+        <header class="section-head">
+          <h2>Video Tương tác</h2>
+          <p class="subhead">
+            Nghe mọi người nói về trải nghiệm của họ với Vier Kit.
+          </p>
+        </header>
+
+        <div class="video-grid">
+          <!-- Card 1 -->
+          <article class="video-card">
+            <button
+              class="thumb"
+              data-video="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            >
+              <img
+                src="thumb-review-1.jpg"
+                width="640"
+                height="360"
+                loading="lazy"
+                decoding="async"
+                alt="VierKit review by TechDaily"
+              />
+              <span class="play">▶</span>
+            </button>
+            <h3 class="video-title">TechDaily: “Plug-and-play in minutes”</h3>
+            <div class="video-meta">6:12 · 120k views</div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="video-card">
+            <button
+              class="thumb"
+              data-video="https://www.youtube.com/embed/VIDEO_ID_2"
+            >
+              <img
+                src="thumb-review-2.jpg"
+                width="640"
+                height="360"
+                loading="lazy"
+                decoding="async"
+                alt="VierKit commuter test"
+              />
+              <span class="play">▶</span>
+            </button>
+            <h3 class="video-title">Commuter Test: City hills & range</h3>
+            <div class="video-meta">8:47 · 54k views</div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="video-card">
+            <button
+              class="thumb"
+              data-video="https://www.youtube.com/embed/VIDEO_ID_3"
+            >
+              <img
+                src="thumb-review-3.jpg"
+                width="640"
+                height="360"
+                loading="lazy"
+                decoding="async"
+                alt="VierKit touring setup"
+              />
+              <span class="play">▶</span>
+            </button>
+            <h3 class="video-title">Touring Setup: 60–80 km rides</h3>
+            <div class="video-meta">5:31 · 32k views</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div
+      class="video-modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-label="Video player"
+    >
+      <div class="video-modal__backdrop"></div>
+      <div class="video-modal__dialog" role="document">
+        <button class="video-modal__close" aria-label="Close video">✕</button>
+        <div class="video-modal__frame">
+          <!-- iframe injected here -->
+        </div>
+      </div>
+    </div>
 
     <!-- Dealers -->
     <section id="dealers" class="section section-alt">
@@ -384,13 +474,28 @@
           <a class="logo-pill" href="#" aria-label="TechDaily">VN Express</a>
           <a class="logo-pill" href="#" aria-label="StartHub">Thanh Niên</a>
           <a class="logo-pill" href="#" aria-label="MakerMag">Tuổi Trẻ</a>
-          <a class="logo-pill" href="#" aria-label="LaunchPad">Báo Đầu tư</a>
         </div>
 
         <!-- Article cards -->
         <div class="press-cards">
           <article class="press-card">
-            <span class="press-outlet">VN Express</span>
+            <a class="press-thumb" href="#" aria-label="Read TechDaily review">
+              <img
+                src="press-techdaily-640.jpg"
+                srcset="
+                  press-techdaily-320.jpg 320w,
+                  press-techdaily-640.jpg 640w,
+                  press-techdaily-960.jpg 960w
+                "
+                sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+                width="640"
+                height="360"
+                loading="lazy"
+                decoding="async"
+                alt="VierKit feature photo on TechDaily"
+              />
+            </a>
+            <span class="press-outlet">TechDaily</span>
             <h3 class="press-title">
               <a href="#"
                 >“VierKit makes eBike conversion truly plug-and-play.”</a
@@ -404,7 +509,17 @@
           </article>
 
           <article class="press-card">
-            <span class="press-outlet">Thanh Niên</span>
+            <a class="press-thumb" href="#" aria-label="Read StartHub feature">
+              <img
+                src="press-starthub-640.jpg"
+                width="640"
+                height="360"
+                loading="lazy"
+                decoding="async"
+                alt="VierCycle founders in StartHub article"
+              />
+            </a>
+            <span class="press-outlet">StartHub</span>
             <h3 class="press-title">
               <a href="#"
                 >“The rising startup electrifying last-mile mobility.”</a
@@ -418,7 +533,21 @@
           </article>
 
           <article class="press-card">
-            <span class="press-outlet">Tuổi Trẻ</span>
+            <a
+              class="press-thumb"
+              href="#"
+              aria-label="Read MakerMag interview"
+            >
+              <img
+                src="press-makermag-640.jpg"
+                width="640"
+                height="360"
+                loading="lazy"
+                decoding="async"
+                alt="Rider converting a bike with VierKit"
+              />
+            </a>
+            <span class="press-outlet">MakerMag</span>
             <h3 class="press-title">
               <a href="#"
                 >“From unused bikes to daily commuters—meet VierKit.”</a
@@ -519,7 +648,7 @@
     <!-- Sticky Mobile CTA -->
     <nav class="mobile-cta" role="region" aria-label="Quick actions">
       <a href="#buy" class="btn btn-primary">Mua VierKit</a>
-      <!-- <a href="#dealers" class="btn btn-outline">Find Dealer</a> -->
+      <!-- <a href="#dealers" class="btn btn-outline">Đại lý</a> -->
       <!-- Replace phone / WhatsApp with your real contact -->
       <a
         href="tel:+84900000000"
@@ -601,6 +730,51 @@
         { threshold: 0.3 }
       );
       nums.forEach((n) => observer.observe(n));
+    </script>
+
+    <script>
+      // Video Reviews modal
+      (function () {
+        const modal = document.querySelector(".video-modal");
+        const frameWrap = document.querySelector(".video-modal__frame");
+        const closeBtn = document.querySelector(".video-modal__close");
+        const backdrop = document.querySelector(".video-modal__backdrop");
+        const buttons = document.querySelectorAll(".video-card .thumb");
+
+        const open = (src) => {
+          // Build iframe only when opened
+          frameWrap.innerHTML = `
+        <iframe
+          src="${src}?autoplay=1&rel=0"
+          title="VierKit video review"
+          loading="eager"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>`;
+          modal.classList.add("open");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+        };
+        const close = () => {
+          modal.classList.remove("open");
+          modal.setAttribute("aria-hidden", "true");
+          frameWrap.innerHTML = ""; // stop playback
+          document.body.style.overflow = "";
+        };
+
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const src = btn.dataset.video;
+            if (src) open(src);
+          });
+        });
+
+        [closeBtn, backdrop].forEach((el) =>
+          el.addEventListener("click", close)
+        );
+        window.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") close();
+        });
+      })();
     </script>
   </body>
 </html>
