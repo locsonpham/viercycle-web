@@ -62,28 +62,126 @@
           </ul>
         </div>
 
+        <!-- Hero Carousel -->
         <div class="hero-media">
-          <!-- Replace this with your product render -->
-          <div class="device-card">
-            <div class="device-screen">
-              <div class="screen-dot"></div>
-              <div class="screen-dot"></div>
-              <div class="screen-dot"></div>
-              <div class="screen-content">
-                <h3>VierKit</h3>
-                <p>
-                  Hub motor + AIO Controller. Dây điện gọn gàng, lắp đặt nhanh
-                  chóng
-                </p>
-                <div
-                  class="product-hero-img"
-                  role="img"
-                  aria-label="VierKit product preview"
-                ></div>
+          <section class="hero-carousel" aria-label="VierKit product carousel">
+            <div class="hc-viewport">
+              <div class="hc-track">
+                <!-- Slide 1 -->
+                <article
+                  class="hc-slide"
+                  aria-roledescription="slide"
+                  aria-label="1 of 3"
+                >
+                  <figure class="hc-card">
+                    <header class="hc-head">
+                      <div class="hc-dots">
+                        <span></span><span></span><span></span>
+                      </div>
+                      <h3>VierKit</h3>
+                      <p>
+                        Hub motor + AIO Controller. Dây điện gọn gàng, lắp đặt
+                        nhanh chóng
+                      </p>
+                    </header>
+                    <div class="hc-media">
+                      <img
+                        class="hc-photo"
+                        src="vierkit-hero-800.jpg"
+                        alt="VierKit product"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </figure>
+                </article>
+
+                <!-- Slide 2 -->
+                <article
+                  class="hc-slide"
+                  aria-roledescription="slide"
+                  aria-label="2 of 3"
+                >
+                  <figure class="hc-card">
+                    <header class="hc-head">
+                      <div class="hc-dots">
+                        <span></span><span></span><span></span>
+                      </div>
+                      <h3>Battery 36V 10Ah</h3>
+                      <p>21700 Li-ion • BMS thông minh • Sạc nhanh</p>
+                    </header>
+                    <div class="hc-media">
+                      <img
+                        class="hc-photo"
+                        src="vierkit-hero-800.jpg"
+                        alt="VierKit product"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </figure>
+                </article>
+
+                <!-- Slide 3 -->
+                <article
+                  class="hc-slide"
+                  aria-roledescription="slide"
+                  aria-label="3 of 3"
+                >
+                  <figure class="hc-card">
+                    <header class="hc-head">
+                      <div class="hc-dots">
+                        <span></span><span></span><span></span>
+                      </div>
+                      <h3>Display &amp; Controls</h3>
+                      <p>Chế độ trợ lực • Tốc độ • Pin • QR/NFC (tuỳ chọn)</p>
+                    </header>
+                    <div class="hc-media">
+                      <img
+                        class="hc-photo"
+                        src="vierkit-hero-800.jpg"
+                        alt="VierKit product"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </figure>
+                </article>
               </div>
             </div>
-            <div class="device-base"></div>
-          </div>
+
+            <!-- Controls -->
+            <button class="hc-nav hc-prev" aria-label="Previous slide">
+              ❮
+            </button>
+            <button class="hc-nav hc-next" aria-label="Next slide">❯</button>
+
+            <!-- Pagination -->
+            <div
+              class="hc-pagers"
+              role="tablist"
+              aria-label="Carousel Pagination"
+            >
+              <button
+                class="hc-dot"
+                role="tab"
+                aria-selected="true"
+                aria-controls="hc-slide-1"
+              ></button>
+              <button
+                class="hc-dot"
+                role="tab"
+                aria-selected="false"
+                aria-controls="hc-slide-2"
+              ></button>
+              <button
+                class="hc-dot"
+                role="tab"
+                aria-selected="false"
+                aria-controls="hc-slide-3"
+              ></button>
+            </div>
+          </section>
         </div>
       </div>
     </section>
@@ -106,6 +204,83 @@
         <div class="stat">
           <span class="stat-num" data-target="5">0</span
           ><span class="stat-label">Quốc gia</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Reviews – Side Label + Three Rows -->
+    <section id="video-reviews" class="vr-section">
+      <div class="vr-wrap">
+        <!-- Left vertical label -->
+        <aside class="vr-label" aria-hidden="true">
+          <span class="vr-label-fade">VIDEO</span>
+          <span class="vr-label-strong">REVIEW</span>
+        </aside>
+
+        <!-- Right content -->
+        <div class="vr-list">
+          <!-- Item 1 -->
+          <article class="vr-item">
+            <a
+              class="vr-thumb"
+              href="https://www.youtube.com/watch?v=VIDEO_ID_1"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="thumb-stella.jpg"
+                alt="Nâng cấp xe Asama thành xe đạp điện công nghệ"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="vr-play">▶</span>
+            </a>
+            <h3 class="vr-title">
+              Nâng cấp chiếc Asama thành xe đạp điện công nghệ
+            </h3>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="vr-item">
+            <a
+              class="vr-thumb"
+              href="https://www.youtube.com/watch?v=VIDEO_ID_2"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="thumb-commute.jpg"
+                alt="U60 Đạp Xe 20KM Đi Làm Mỗi Ngày - Bí Quyết Duy Trì Đam Mê"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="vr-play">▶</span>
+            </a>
+            <h3 class="vr-title">
+              U60 Đạp Xe 20KM Đi Làm Mỗi Ngày – Bí Quyết Duy Trì Đam Mê
+            </h3>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="vr-item">
+            <a
+              class="vr-thumb"
+              href="https://www.youtube.com/watch?v=VIDEO_ID_3"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="thumb-greenpoint.jpg"
+                alt="VierCycle Giải Pháp Xe Đạp Công Nghệ Cho Lối Sống Xanh Bền Vững"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="vr-play">▶</span>
+            </a>
+            <h3 class="vr-title">
+              VierCycle Giải Pháp Xe Đạp Công Nghệ Cho Lối Sống Xanh Bền Vững
+            </h3>
+          </article>
         </div>
       </div>
     </section>
@@ -243,6 +418,65 @@
             >
             </iframe>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Feature Banners (3 items) ===== -->
+    <section id="feature-banners" class="fb-section">
+      <div class="fb-row">
+        <figure class="fb-media">
+          <img
+            src="feature-1.jpg"
+            alt="Natural assist feel when riding with VierKit"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <div class="fb-body">
+          <h2 class="fb-title">Natural assist you’ll love</h2>
+          <p class="fb-text">
+            Smooth, torque-sensed power that keeps your cadence natural. Climb
+            hills and cruise city streets without losing that “analog bike”
+            feel.
+          </p>
+        </div>
+      </div>
+
+      <div class="fb-row fb-row--reverse">
+        <figure class="fb-media">
+          <img
+            src="feature-2.jpg"
+            alt="Plug-and-play installation with clean wiring"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <div class="fb-body">
+          <h2 class="fb-title">Plug-and-play in minutes</h2>
+          <p class="fb-text">
+            Pre-terminated harnesses, labeled connectors, and a compact
+            controller. Most riders install VierKit in about 10 minutes with
+            basic tools.
+          </p>
+        </div>
+      </div>
+
+      <div class="fb-row">
+        <figure class="fb-media">
+          <img
+            src="feature-3.jpg"
+            alt="Greener commuting with long range battery"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <div class="fb-body">
+          <h2 class="fb-title">Greener, longer rides</h2>
+          <p class="fb-text">
+            36 V 10 Ah battery with up to 60–80 km range (eco mode). Convert
+            your current bike—save money and cut CO₂ without buying new.
+          </p>
         </div>
       </div>
     </section>
@@ -774,6 +1008,108 @@
         window.addEventListener("keydown", (e) => {
           if (e.key === "Escape") close();
         });
+      })();
+    </script>
+    <script>
+      (function () {
+        const root = document.querySelector(".hero-carousel");
+        if (!root) return;
+
+        const track = root.querySelector(".hc-track");
+        const slides = Array.from(root.querySelectorAll(".hc-slide"));
+        const prev = root.querySelector(".hc-prev");
+        const next = root.querySelector(".hc-next");
+        const dots = Array.from(root.querySelectorAll(".hc-dot"));
+        const total = slides.length;
+        let index = 0,
+          autoplay,
+          startX = 0,
+          curX = 0,
+          dragging = false;
+
+        function go(i, user = false) {
+          index = (i + total) % total;
+          track.style.transform = `translateX(-${index * 100}%)`;
+          dots.forEach((d, di) =>
+            d.setAttribute("aria-selected", di === index ? "true" : "false")
+          );
+          // reset autoplay on user interaction
+          if (user) {
+            stop();
+            start();
+          }
+        }
+        function nextSlide(user = false) {
+          go(index + 1, user);
+        }
+        function prevSlide(user = false) {
+          go(index - 1, user);
+        }
+
+        // Dots
+        dots.forEach((d, di) =>
+          d.addEventListener("click", () => go(di, true))
+        );
+
+        // Buttons
+        next.addEventListener("click", () => nextSlide(true));
+        prev.addEventListener("click", () => prevSlide(true));
+
+        // Keyboard
+        root.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowRight") nextSlide(true);
+          if (e.key === "ArrowLeft") prevSlide(true);
+        });
+        root.tabIndex = 0; // focusable for keyboard
+
+        // Swipe
+        const vp = root.querySelector(".hc-viewport");
+        const onDown = (x) => {
+          dragging = true;
+          startX = x;
+          curX = x;
+          track.style.transition = "none";
+        };
+        const onMove = (x) => {
+          if (!dragging) return;
+          curX = x;
+          const dx = curX - startX;
+          track.style.transform = `translateX(calc(-${
+            index * 100
+          }% + ${dx}px))`;
+        };
+        const onUp = () => {
+          if (!dragging) return;
+          track.style.transition = "";
+          const dx = curX - startX;
+          const threshold = vp.clientWidth * 0.18;
+          if (dx < -threshold) nextSlide(true);
+          else if (dx > threshold) prevSlide(true);
+          else go(index, true);
+          dragging = false;
+        };
+        vp.addEventListener("pointerdown", (e) => {
+          vp.setPointerCapture(e.pointerId);
+          onDown(e.clientX);
+        });
+        vp.addEventListener("pointermove", (e) => onMove(e.clientX));
+        vp.addEventListener("pointerup", onUp);
+        vp.addEventListener("pointercancel", onUp);
+        vp.addEventListener("pointerleave", onUp);
+
+        // Autoplay
+        function start() {
+          autoplay = setInterval(() => nextSlide(false), 5000);
+        }
+        function stop() {
+          clearInterval(autoplay);
+        }
+        root.addEventListener("mouseenter", stop);
+        root.addEventListener("mouseleave", start);
+        start();
+
+        // Init
+        go(0);
       })();
     </script>
   </body>
