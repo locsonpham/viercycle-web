@@ -398,6 +398,52 @@
       </div>
     </footer>
 
+    <!-- Sticky Mobile CTA -->
+    <nav class="mobile-cta" role="region" aria-label="Quick actions">
+      <a href="#buy" class="btn btn-primary">Buy VierKit</a>
+      <a href="#dealers" class="btn btn-outline">Find Dealer</a>
+      <!-- Replace phone / WhatsApp with your real contact -->
+      <a
+        href="tel:+84900000000"
+        class="btn btn-ghost"
+        aria-label="Call VierCycle"
+        >Call</a
+      >
+    </nav>
+
+    <script>
+      // Hide sticky CTA when #buy section is in view
+      (function () {
+        const bar = document.querySelector(".mobile-cta");
+        const target = document.querySelector("#buy");
+        if (!bar || !target) return;
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            const entry = entries[0];
+            // If the buy section is at least ~45% visible, hide the sticky bar
+            if (entry.isIntersecting && entry.intersectionRatio > 0.45) {
+              bar.classList.add("hidden");
+            } else {
+              bar.classList.remove("hidden");
+            }
+          },
+          { threshold: [0, 0.45, 1] }
+        );
+
+        io.observe(target);
+
+        // Optional: hide while the mobile menu is open
+        const toggle = document.querySelector(".nav-toggle");
+        if (toggle) {
+          toggle.addEventListener("click", () => {
+            const expanded = toggle.getAttribute("aria-expanded") === "true";
+            bar.style.visibility = expanded ? "hidden" : "visible";
+          });
+        }
+      })();
+    </script>
+
     <script>
       // Mobile nav
       const toggle = document.querySelector(".nav-toggle");

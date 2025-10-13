@@ -350,3 +350,35 @@ html{
 @media (prefers-reduced-motion: reduce){
   *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ===== Sticky Mobile CTA ===== */
+.mobile-cta{
+  position: fixed; left: 0; right: 0; bottom: 0;
+  display: none; /* default hidden on desktop */
+  background: #fff;
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -8px 24px rgba(15,23,42,.08);
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  z-index: 70;
+  gap: 8px;
+}
+.mobile-cta .btn{ flex: 1 1 auto; }
+.mobile-cta .btn-primary{ box-shadow: 0 6px 18px rgba(34,207,202,.25); }
+
+/* Slide-hide when #buy is visible */
+.mobile-cta.hidden{
+  transform: translateY(120%);
+  opacity: 0;
+  pointer-events: none;
+}
+.mobile-cta, .mobile-cta.hidden{ transition: transform .28s ease, opacity .28s ease; }
+
+/* Show only on small screens and avoid overlap with content */
+@media (max-width: 720px){
+  .mobile-cta{ display: grid; grid-template-columns: 1fr 1fr 1fr; }
+  body{ padding-bottom: 78px; } /* room for the bar */
+}
+@media (max-width: 380px){
+  .mobile-cta{ grid-template-columns: 1fr 1fr; }
+  .mobile-cta .btn:nth-child(3){ display:none; } /* hide 3rd button on very small phones */
+}
