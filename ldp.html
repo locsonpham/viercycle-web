@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vier Kit - The Ultimate E-Bike Conversion Kit</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom scroll behavior for sticky nav */
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      /* Custom utility for the pre-order highlight */
+      .highlight-card {
+        /* Changed shadow color to reflect the new primary color */
+        box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.2),
+          0 8px 10px -6px rgba(245, 158, 11, 0.1);
+      }
+
+      /* Responsive container for product image */
+      .product-mockup {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease-in-out;
+      }
+      .product-mockup:hover {
+        transform: translateY(-4px);
+      }
+
+      /* Mobile App Mockup Styling - Added subtle 3D tilt for a device look */
+      .mobile-mockup {
+        transform: rotateY(-5deg) rotateX(5deg);
+        box-shadow: -20px 20px 40px rgba(0, 0, 0, 0.2);
+        transition: all 0.5s ease-in-out;
+      }
+      .mobile-mockup:hover {
+        transform: none;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      }
+
+      /* Styling for the timeline step indicator */
+      .timeline-step {
+        position: relative;
+      }
+      .timeline-step::before {
+        content: "";
+        position: absolute;
+        left: -1.75rem; /* Adjust to align with the start of the item text */
+        top: 0.5rem;
+        height: 100%;
+        width: 2px;
+        background-color: #fcd34d; /* Amber-300 */
+      }
+      /* Hide the vertical line on the last element */
+      .timeline-step:last-child::before {
+        height: 0;
+      }
+
+      /* Custom styling for the FAQ accordion chevron */
+      details summary::-webkit-details-marker {
+        display: none;
+      }
+      details summary {
+        cursor: pointer;
+        list-style: none; /* Remove default marker */
+        position: relative;
+        padding-right: 2rem; /* Space for the custom chevron */
+      }
+      details summary::after {
+        content: "▶"; /* Right triangle */
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%) rotate(0deg);
+        transition: transform 0.3s ease;
+        color: #f59e0b; /* Primary color */
+        font-size: 0.8rem;
+      }
+      details[open] summary::after {
+        content: "▼"; /* Down triangle */
+        transform: translateY(-50%) rotate(0deg); /* No extra rotation needed for down arrow */
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              // Changed to Amber for a strong, energetic feel
+              primary: "#F59E0B", // Amber-500
+              accent: "#D97706", // Amber-600 (Darker for hover)
+              "dark-bg": "#111827", // Gray-900 for Footer
+            },
+          },
+        },
+      };
+
+      // Simple function to simulate pre-order submission feedback
+      function handlePreOrderSubmit(event) {
+        event.preventDefault();
+        const emailInput = document.getElementById("preorder-email");
+        const messageBox = document.getElementById("preorder-message");
+
+        messageBox.classList.remove("hidden", "text-red-500", "text-green-600");
+        messageBox.classList.add("text-amber-600");
+        messageBox.textContent = "Processing your pre-order request...";
+
+        setTimeout(() => {
+          if (emailInput.value && emailInput.value.includes("@")) {
+            messageBox.classList.remove("text-amber-600");
+            messageBox.classList.add("text-green-600");
+            messageBox.textContent =
+              "✅ Success! We've reserved your kit and sent details to " +
+              emailInput.value;
+            emailInput.value = "";
+          } else {
+            messageBox.classList.remove("text-amber-600");
+            messageBox.classList.add("text-red-500");
+            messageBox.textContent =
+              "❌ Please enter a valid email address to reserve your kit.";
+          }
+        }, 1500);
+      }
+
+      // Function to initialize the crowdfunding counter using dummy data
+      function initializeCrowdfundCounter() {
+        // Dummy Data for Crowdfunding Goal
+        const goal = 150000;
+        const pledged = 112500;
+        const backers = 450;
+
+        const percentage = Math.min((pledged / goal) * 100, 100);
+
+        // Update text elements
+        document.getElementById(
+          "pledged-amount"
+        ).textContent = `$${pledged.toLocaleString()}`;
+        document.getElementById(
+          "goal-amount"
+        ).textContent = `$${goal.toLocaleString()} Goal`;
+        document.getElementById("backer-count").textContent =
+          backers.toLocaleString();
+        document.getElementById(
+          "percentage-funded"
+        ).textContent = `${Math.round(percentage)}% Funded`;
+
+        // Update progress bar width
+        const progressBar = document.getElementById("progress-bar-fill");
+        if (progressBar) {
+          progressBar.style.width = `${percentage}%`;
+        }
+      }
+
+      // Run the initialization when the page loads
+      window.onload = initializeCrowdfundCounter;
+    </script>
+  </head>
+  <body class="bg-white text-gray-800">
+    <!-- Sticky Header & Navigation -->
+    <header
+      id="nav"
+      class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo -->
+          <a
+            href="#"
+            class="flex items-center text-2xl font-extrabold text-accent tracking-tight"
+          >
+            <svg
+              class="w-6 h-6 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              ></path>
+            </svg>
+            Vier Kit
+          </a>
+
+          <!-- Desktop Nav Links (Updated to include Mobile App) -->
+          <nav class="hidden md:flex space-x-8 text-sm font-medium">
+            <a
+              href="#features"
+              class="text-gray-600 hover:text-primary transition"
+              >Features</a
+            >
+            <a
+              href="#mobile-app"
+              class="text-gray-600 hover:text-primary transition"
+              >Mobile App</a
+            >
+            <!-- NEW LINK -->
+            <a
+              href="#gallery"
+              class="text-gray-600 hover:text-primary transition"
+              >Gallery</a
+            >
+            <a
+              href="#videos"
+              class="text-gray-600 hover:text-primary transition"
+              >Installation</a
+            >
+            <a
+              href="#accessories"
+              class="text-gray-600 hover:text-primary transition"
+              >Accessories</a
+            >
+            <a
+              href="#certificates"
+              class="text-gray-600 hover:text-primary transition"
+              >Certificates</a
+            >
+            <a
+              href="#timeline"
+              class="text-gray-600 hover:text-primary transition"
+              >Timeline</a
+            >
+            <a
+              href="#testimonials"
+              class="text-gray-600 hover:text-primary transition"
+              >Reviews</a
+            >
+            <a href="#faq" class="text-gray-600 hover:text-primary transition"
+              >FAQ</a
+            >
+            <a
+              href="#order-kit"
+              class="text-gray-600 hover:text-primary transition"
+              >Pre-Order</a
+            >
+          </nav>
+
+          <!-- Primary CTA Button -->
+          <a
+            href="#order-kit"
+            class="hidden md:inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-primary hover:bg-accent transition shadow-lg shadow-primary/30"
+          >
+            Pre-Order Now
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- 1. Hero Section - Product Introduction -->
+      <section class="pt-16 pb-24 lg:pt-24 lg:pb-32 bg-gray-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div class="max-w-3xl mx-auto">
+            <!-- Pre-Headline Badge -->
+            <span
+              class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary mb-4"
+            >
+              ⚡️ Limited Stock - First 100 Orders Get 10% Off
+            </span>
+
+            <!-- Main Headline -->
+            <h1
+              class="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight mb-4"
+            >
+              The Ultimate E-Bike Conversion Kit. Power Your Ride.
+            </h1>
+
+            <!-- Sub-Headline -->
+            <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
+              Instantly transform any bicycle into a high-performance e-bike
+              with our 1000W mid-drive motor. Experience 50+ miles of range and
+              effortless installation.
+            </p>
+
+            <!-- Dual CTAs -->
+            <div
+              class="mt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4"
+            >
+              <a
+                href="#order-kit"
+                class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-semibold rounded-xl text-white bg-primary hover:bg-accent transition transform hover:scale-[1.02] shadow-xl shadow-primary/30"
+              >
+                Pre-Order Now (Reserve Yours)
+              </a>
+              <a
+                href="#tech-specs"
+                class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 text-base font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 transition transform hover:scale-[1.02] shadow-md"
+              >
+                View Tech Specs
+              </a>
+            </div>
+
+            <!-- CROWDFUNDING COUNTER -->
+            <div
+              class="mt-12 w-full max-w-xl mx-auto p-6 bg-white rounded-xl shadow-xl border border-gray-100"
+            >
+              <!-- Progress Bar -->
+              <div class="h-3 bg-gray-200 rounded-full mb-3 overflow-hidden">
+                <div
+                  id="progress-bar-fill"
+                  class="h-full bg-primary rounded-full transition-all duration-700 ease-out"
+                  style="width: 0%"
+                ></div>
+              </div>
+
+              <!-- Statistics -->
+              <div class="flex justify-between items-start text-left">
+                <div class="w-1/3">
+                  <p
+                    id="pledged-amount"
+                    class="text-2xl font-extrabold text-gray-900"
+                  >
+                    $112,500
+                  </p>
+                  <p
+                    class="text-xs font-medium text-gray-500 uppercase tracking-widest"
+                  >
+                    Pledged
+                  </p>
+                </div>
+                <div class="w-1/3 text-center">
+                  <p
+                    id="backer-count"
+                    class="text-2xl font-extrabold text-gray-900"
+                  >
+                    450
+                  </p>
+                  <p
+                    class="text-xs font-medium text-gray-500 uppercase tracking-widest"
+                  >
+                    Backers
+                  </p>
+                </div>
+                <div class="w-1/3 text-right">
+                  <p
+                    id="percentage-funded"
+                    class="text-2xl font-extrabold text-primary"
+                  >
+                    75% Funded
+                  </p>
+                  <p
+                    id="goal-amount"
+                    class="text-xs font-medium text-gray-500 uppercase tracking-widest"
+                  >
+                    $150,000 Goal
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- END CROWDFUNDING COUNTER -->
+          </div>
+
+          <!-- Product Mockup Visual -->
+          <div class="mt-16">
+            <!-- Updated placeholder color -->
+            <img
+              src="https://placehold.co/1200x700/FEF3C7/F59E0B?text=Vier+Kit+on+Bike+Mockup"
+              alt="Mockup of the Vier Kit conversion kit mounted on a bicycle"
+              class="product-mockup mx-auto w-full lg:w-4/5"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Client Logos (Industry Endorsements - Reused for Social Proof) -->
+      <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p class="text-center text-lg font-semibold text-gray-500 mb-8">
+            Featured in leading cycling publications and reviewed by top tech
+            blogs.
+          </p>
+          <div class="grid grid-cols-3 md:grid-cols-6 gap-8 opacity-70">
+            <img
+              src="https://placehold.co/120x40/F3F4F6/9CA3AF?text=Cycling+Daily"
+              alt="Cycling Daily Logo"
+              class="h-8 md:h-10 w-auto mx-auto grayscale hover:grayscale-0 transition duration-300"
+            />
+            <img
+              src="https://placehold.co/120x40/F3F4F6/9CA3AF?text=Tech+Hub"
+              alt="Tech Hub Logo"
+              class="h-8 md:h-10 w-auto mx-auto grayscale hover:grayscale-0 transition duration-300"
+            />
+            <img
+              src="https://placehold.co/120x40/F3F4F6/9CA3AF?text=Gear+Review"
+              alt="Gear Review Logo"
+              class="h-8 md:h-10 w-auto mx-auto grayscale hover:grayscale-0 transition duration-300"
+            />
+            <img
+              src="https://placehold.co/120x40/F3F4F6/9CA3AF?text=Wired+Mag"
+              alt="Wired Magazine Logo"
+              class="h-8 md:h-10 w-auto mx-auto grayscale hover:grayscale-0 transition duration-300 hidden md:block"
+            />
+            <img
+              src="https://placehold.co/120x40/F3F4F6/9CA3AF?text=E-Mobility"
+              alt="E-Mobility Magazine Logo"
+              class="h-8 md:h-10 w-auto mx-auto grayscale hover:grayscale-0 transition duration-300 hidden md:block"
+            />
+            <img
+              src="https://placehold.co/120x40/F3F4F6/9CA3AF?text=The+Ride"
+              alt="The Ride Blog Logo"
+              class="h-8 md:h-10 w-auto mx-auto grayscale hover:grayscale-0 transition duration-300 hidden md:block"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Key Features / Value Proposition (Product Benefits) -->
+      <section id="features" class="py-20 lg:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              Next-Gen Power, Effortless Installation
+            </h2>
+            <p class="mt-4 text-xl text-gray-500">
+              Three reasons why the Vier Kit is the ultimate choice for your
+              conversion.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Feature 1: Power/Torque -->
+            <div
+              class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition duration-300 group"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/10 text-primary mb-4 text-2xl font-bold"
+              >
+                ⛰️
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
+                Conquer Any Hill
+              </h3>
+              <p class="text-gray-500">
+                Unmatched 120Nm of torque from the powerful mid-drive motor
+                ensures you climb steep inclines without breaking a sweat.
+              </p>
+            </div>
+            <!-- Feature 2: Range -->
+            <div
+              class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition duration-300 group"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/10 text-primary mb-4 text-2xl font-bold"
+              >
+                🔋
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
+                Extended Range Battery
+              </h3>
+              <p class="text-gray-500">
+                The lightweight, high-capacity battery provides up to 55 miles
+                (90km) of assisted riding on a single 4-hour charge.
+              </p>
+            </div>
+            <!-- Feature 3: Installation -->
+            <div
+              class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition duration-300 group"
+            >
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/10 text-primary mb-4 text-2xl font-bold"
+              >
+                🔧
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
+                Tool-Free Setup
+              </h3>
+              <p class="text-gray-500">
+                Designed for DIY enthusiasts. The modular system can be
+                installed on most bike frames in under an hour with zero
+                specialized tools.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Detailed Feature Spotlight 1 (Tech Specs) -->
+      <section id="tech-specs" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row items-center gap-12">
+            <!-- Image/Visual -->
+            <div class="md:w-1/2">
+              <!-- Updated placeholder color -->
+              <img
+                src="https://placehold.co/600x400/F59E0B/FEF3C7?text=Motor+and+Battery+Diagram"
+                alt="Motor and Battery Technical Diagram"
+                class="product-mockup w-full"
+              />
+            </div>
+
+            <!-- Text Content -->
+            <div class="md:w-1/2">
+              <span
+                class="text-sm font-semibold text-primary uppercase mb-2 block"
+                >POWER & PERFORMANCE</span
+              >
+              <h2 class="text-3xl font-extrabold text-gray-900 mb-4">
+                Deep Dive into the Core Components
+              </h2>
+              <p class="text-lg text-gray-600 mb-6">
+                We engineered the Vier Kit with aerospace-grade aluminum and
+                silent-drive technology for maximum durability and a smooth ride
+                experience.
+              </p>
+              <ul class="space-y-3 text-gray-700 grid grid-cols-2">
+                <li class="flex items-center">
+                  <span class="text-primary mr-3 text-xl">⚙️</span> Motor: 1000W
+                  Mid-Drive
+                </li>
+                <li class="flex items-center">
+                  <span class="text-primary mr-3 text-xl">🔋</span> Battery:
+                  48V, 17.5Ah Li-Ion
+                </li>
+                <li class="flex items-center">
+                  <span class="text-primary mr-3 text-xl">🏔️</span> Max Torque:
+                  120Nm
+                </li>
+                <li class="flex items-center">
+                  <span class="text-primary mr-3 text-xl">📏</span> Weight: 8.5
+                  lbs (3.8 kg)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Mobile App Section (NEW) -->
+      <section id="mobile-app" class="py-20 lg:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+            <!-- Image/Visual: Mobile App Mockup -->
+            <div class="md:w-1/2 flex justify-center perspective-[1000px]">
+              <img
+                src="https://placehold.co/300x600/1F2937/F59E0B?text=Vier+Companion+App+Screen"
+                alt="Mockup of the Vier Companion Mobile App on a smartphone"
+                class="w-full max-w-sm rounded-3xl border-[8px] border-gray-800 shadow-2xl mobile-mockup"
+              />
+            </div>
+
+            <!-- Text Content: Features List -->
+            <div class="md:w-1/2">
+              <span
+                class="text-sm font-semibold text-primary uppercase mb-2 block"
+                >SMART CONNECTIVITY</span
+              >
+              <h2 class="text-3xl font-extrabold text-gray-900 mb-4">
+                App-Enabled Convenience
+              </h2>
+              <p class="text-lg text-gray-600 mb-8">
+                Unlock the full potential of your Vier Kit with the companion
+                app, providing advanced control, diagnostics, and social riding
+                features right on your phone.
+              </p>
+
+              <ul class="space-y-4">
+                <!-- Feature 1: Calibration -->
+                <li class="flex items-start">
+                  <span class="text-primary text-2xl mr-4 mt-1">🎯</span>
+                  <div>
+                    <h3 class="font-bold text-gray-900">
+                      Auto Installation Calibration
+                    </h3>
+                    <p class="text-gray-600 text-sm">
+                      Fine-tune torque sensors and display settings
+                      automatically after installation.
+                    </p>
+                  </div>
+                </li>
+                <!-- Feature 2: Regulations -->
+                <li class="flex items-start">
+                  <span class="text-primary text-2xl mr-4 mt-1">🚦</span>
+                  <div>
+                    <h3 class="font-bold text-gray-900">
+                      Auto Adapt to Local Traffic Regulations
+                    </h3>
+                    <p class="text-gray-600 text-sm">
+                      Instantly adjust max speed and power limits to comply with
+                      local e-bike laws in seconds.
+                    </p>
+                  </div>
+                </li>
+                <!-- Feature 3: Modes -->
+                <li class="flex items-start">
+                  <span class="text-primary text-2xl mr-4 mt-1">🔄</span>
+                  <div>
+                    <h3 class="font-bold text-gray-900">Switch All 4 Modes</h3>
+                    <p class="text-gray-600 text-sm">
+                      Easily switch between Eco, Standard, Turbo, and Off-Road
+                      modes on the fly.
+                    </p>
+                  </div>
+                </li>
+                <!-- Feature 4: OTA -->
+                <li class="flex items-start">
+                  <span class="text-primary text-2xl mr-4 mt-1">☁️</span>
+                  <div>
+                    <h3 class="font-bold text-gray-900">OTA Update</h3>
+                    <p class="text-gray-600 text-sm">
+                      Keep your motor and controller firmware up-to-date with
+                      seamless Over-The-Air updates.
+                    </p>
+                  </div>
+                </li>
+                <!-- Feature 5: Group -->
+                <li class="flex items-start">
+                  <span class="text-primary text-2xl mr-4 mt-1">🧑‍🤝‍🧑</span>
+                  <div>
+                    <h3 class="font-bold text-gray-900">
+                      Create a Group with Friends
+                    </h3>
+                    <p class="text-gray-600 text-sm">
+                      Track group rides, share routes, and see friends'
+                      locations in real-time.
+                    </p>
+                  </div>
+                </li>
+                <!-- Feature 6: Fault Detection -->
+                <li class="flex items-start">
+                  <span class="text-primary text-2xl mr-4 mt-1">🩺</span>
+                  <div>
+                    <h3 class="font-bold text-gray-900">
+                      Remote Fault Detection
+                    </h3>
+                    <p class="text-gray-600 text-sm">
+                      Run diagnostics and receive instant notifications for any
+                      potential system issues.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Gallery Section (Updated index from 5 to 6) -->
+      <section id="gallery" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              See the Vier Kit from Every Angle
+            </h2>
+            <p class="mt-4 text-xl text-gray-500">
+              A look at the components, mounting, and finished result on various
+              frames.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Updated placeholder color -->
+            <img
+              src="https://placehold.co/600x400/D97706/FEF3C7?text=Kit+Installed+on+MTB"
+              alt="Vier Kit installed on a mountain bike"
+              class="w-full h-full object-cover rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.01]"
+            />
+            <!-- Updated placeholder color -->
+            <img
+              src="https://placehold.co/600x400/F59E0B/FEF3C7?text=Motor+Close+Up+Installation"
+              alt="Close up of mid-drive motor unit installation"
+              class="w-full h-full object-cover rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.01]"
+            />
+            <!-- Updated placeholder color -->
+            <img
+              src="https://placehold.co/600x400/D97706/FEF3C7?text=Display+%26+Controls"
+              alt="Handlebar display and controls"
+              class="w-full h-full object-cover rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-[1.01]"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Assembly Videos Section (Updated index from 6 to 7) -->
+      <section id="videos" class="py-20 lg:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              Installation Made Easy
+            </h2>
+            <p class="mt-4 text-xl text-gray-500">
+              Watch our step-by-step video guides and start riding sooner. Zero
+              specialized tools required.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Video Placeholder 1 -->
+            <div class="p-4 bg-white rounded-xl shadow-lg">
+              <!-- Updated placeholder color -->
+              <img
+                src="https://placehold.co/400x225/D97706/FEF3C7?text=VIDEO+1:+Motor+Install"
+                alt="Motor Installation Video Thumbnail"
+                class="w-full rounded-lg mb-4 cursor-pointer hover:opacity-90 transition"
+              />
+              <h3 class="text-lg font-bold text-gray-900">
+                Part 1: Mid-Drive Motor Installation
+              </h3>
+              <p class="text-sm text-gray-500">
+                Detailed guide on removing your crankset and mounting the motor.
+              </p>
+            </div>
+            <!-- Video Placeholder 2 -->
+            <div class="p-4 bg-white rounded-xl shadow-lg">
+              <!-- Updated placeholder color -->
+              <img
+                src="https://placehold.co/400x225/D97706/FEF3C7?text=VIDEO+2:+Battery+Mount"
+                alt="Battery Mounting Video Thumbnail"
+                class="w-full rounded-lg mb-4 cursor-pointer hover:opacity-90 transition"
+              />
+              <h3 class="text-lg font-bold text-gray-900">
+                Part 2: Battery Mounting & Wiring
+              </h3>
+              <p class="text-sm text-gray-500">
+                How to securely attach the battery to your frame and connect the
+                power cable.
+              </p>
+            </div>
+            <!-- Video Placeholder 3 -->
+            <div class="p-4 bg-white rounded-xl shadow-lg">
+              <!-- Updated placeholder color -->
+              <img
+                src="https://placehold.co/400x225/D97706/FEF3C7?text=VIDEO+3:+Final+Setup"
+                alt="Final Setup Video Thumbnail"
+                class="w-full rounded-lg mb-4 cursor-pointer hover:opacity-90 transition"
+              />
+              <h3 class="text-lg font-bold text-gray-900">
+                Part 3: Display & Sensor Configuration
+              </h3>
+              <p class="text-sm text-gray-500">
+                Calibrating the pedal-assist sensor and setting up the display
+                unit.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Pre-Order Feature Section (Updated index from 7 to 8) -->
+      <section id="order-kit" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+            <!-- Visual / Price Card -->
+            <div class="md:w-1/2">
+              <!-- Updated border color and shadow in CSS class -->
+              <div
+                class="bg-gray-50 p-10 rounded-2xl highlight-card border-2 border-primary"
+              >
+                <span
+                  class="inline-flex items-center rounded-full bg-primary text-white text-xs font-semibold px-3 py-1 mb-4"
+                  >BATCH 1: 75% SOLD OUT</span
+                >
+                <h3 class="text-3xl font-bold text-gray-900 mb-2">
+                  Pre-Order Special Price
+                </h3>
+                <div class="flex items-baseline mb-6">
+                  <span class="text-6xl font-extrabold text-primary">$699</span>
+                  <span
+                    class="text-xl font-medium text-gray-500 line-through ml-4"
+                    >$999 MSRP</span
+                  >
+                </div>
+                <p class="text-lg text-gray-600 mb-6">
+                  Reserve your Vier Kit today for a single, low introductory
+                  payment. Kits ship Q1 2026.
+                </p>
+
+                <!-- Simulated Pre-Order Form -->
+                <form onsubmit="handlePreOrderSubmit(event)">
+                  <label
+                    for="preorder-email"
+                    class="block text-sm font-medium text-gray-700 mb-2"
+                    >Your Email Address:</label
+                  >
+                  <input
+                    type="email"
+                    id="preorder-email"
+                    placeholder="you@example.com"
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary mb-4"
+                  />
+                  <button
+                    type="submit"
+                    class="block w-full text-center py-3 border border-transparent text-base font-semibold rounded-xl text-white bg-primary hover:bg-accent transition shadow-lg shadow-primary/40"
+                  >
+                    Secure My Kit Now ($699)
+                  </button>
+                </form>
+                <p
+                  id="preorder-message"
+                  class="mt-4 text-sm font-medium hidden text-center"
+                ></p>
+              </div>
+            </div>
+
+            <!-- Text Content -->
+            <div class="md:w-1/2">
+              <span
+                class="text-sm font-semibold text-primary uppercase mb-2 block"
+                >LIMITED AVAILABILITY</span
+              >
+              <h2 class="text-3xl font-extrabold text-gray-900 mb-4">
+                Secure Your Place in the First Production Batch
+              </h2>
+              <p class="text-lg text-gray-600 mb-6">
+                Due to high demand and supply chain limitations, the first batch
+                of Vier Kit is extremely limited. Pre-ordering is the only way
+                to guarantee you receive the kit at this discounted price.
+              </p>
+              <p class="text-lg font-semibold text-gray-800">
+                Don't miss out on the early adopter discount!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. Testimonials Section (Updated index from 8 to 9) -->
+      <section id="testimonials" class="py-20 lg:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              Real Riders, Real Power
+            </h2>
+            <p class="mt-4 text-xl text-gray-500">
+              See what early beta testers are saying about the Vier Kit.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Testimonial Card 1 -->
+            <div
+              class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100"
+            >
+              <p class="text-3xl text-gray-300 font-serif mb-4">“</p>
+              <p class="text-gray-700 italic mb-6">
+                "The installation took exactly 45 minutes, just as promised. The
+                torque is incredible—it handles my 15% grade commute like it's
+                flat ground. Game changer!"
+              </p>
+              <div class="flex items-center">
+                <!-- Updated placeholder color -->
+                <img
+                  src="https://placehold.co/48x48/F59E0B/ffffff?text=JT"
+                  alt="Jillian Turner"
+                  class="w-12 h-12 rounded-full mr-4"
+                />
+                <div>
+                  <p class="font-bold text-gray-900">Jillian Turner</p>
+                  <p class="text-sm text-primary">Daily Commuter, CA</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial Card 2 -->
+            <div
+              class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100"
+            >
+              <p class="text-3xl text-gray-300 font-serif mb-4">“</p>
+              <p class="text-gray-700 italic mb-6">
+                "I ride trail systems, and the battery life is fantastic. I
+                easily got 50+ miles without worrying about conservation. The
+                motor is also surprisingly quiet."
+              </p>
+              <div class="flex items-center">
+                <!-- Updated placeholder color -->
+                <img
+                  src="https://placehold.co/48x48/F59E0B/ffffff?text=MR"
+                  alt="Marcus Riley"
+                  class="w-12 h-12 rounded-full mr-4"
+                />
+                <div>
+                  <p class="font-bold text-gray-900">Marcus Riley</p>
+                  <p class="text-sm text-primary">Mountain Biker, CO</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial Card 3 -->
+            <div
+              class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100"
+            >
+              <p class="text-3xl text-gray-300 font-serif mb-4">“</p>
+              <p class="text-gray-700 italic mb-6">
+                "I almost bought a new e-bike for $3,000. This kit saved me
+                thousands and lets me keep my favorite frame. Best investment
+                I've made all year."
+              </p>
+              <div class="flex items-center">
+                <!-- Updated placeholder color -->
+                <img
+                  src="https://placehold.co/48x48/F59E0B/ffffff?text=AC"
+                  alt="Anna Chen"
+                  class="w-12 h-12 rounded-full mr-4"
+                />
+                <div>
+                  <p class="font-bold text-gray-900">Anna Chen</p>
+                  <p class="text-sm text-primary">Hobby Cyclist, OR</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. Accessories Section (Updated index from 9 to 10) -->
+      <section id="accessories" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              Power Up Your Ride with Essential Add-ons
+            </h2>
+            <p class="mt-4 text-xl text-gray-500">
+              Upgrade your Vier Kit experience with our most popular
+              accessories.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Accessory 1 -->
+            <div
+              class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-100 text-center hover:shadow-lg transition duration-300"
+            >
+              <!-- Updated placeholder color -->
+              <img
+                src="https://placehold.co/150x150/F59E0B/FFFFFF?text=Extra+Battery"
+                alt="Extra Battery Pack"
+                class="mx-auto mb-4 rounded-lg"
+              />
+              <h3 class="text-lg font-bold text-gray-900">
+                Long Range Battery Upgrade
+              </h3>
+              <p class="text-gray-500 mb-4 text-sm">
+                Boost your range to 100+ miles for all-day riding.
+              </p>
+              <span class="text-2xl font-bold text-primary">$349</span>
+            </div>
+            <!-- Accessory 2 -->
+            <div
+              class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-100 text-center hover:shadow-lg transition duration-300"
+            >
+              <!-- Updated placeholder color -->
+              <img
+                src="https://placehold.co/150x150/F59E0B/FFFFFF?text=Thumb+Throttle"
+                alt="Thumb Throttle"
+                class="mx-auto mb-4 rounded-lg"
+              />
+              <h3 class="text-lg font-bold text-gray-900">
+                Thumb Throttle Add-On
+              </h3>
+              <p class="text-gray-500 mb-4 text-sm">
+                Activate motor power without needing to pedal.
+              </p>
+              <span class="text-2xl font-bold text-primary">$49</span>
+            </div>
+            <!-- Accessory 3 -->
+            <div
+              class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-100 text-center hover:shadow-lg transition duration-300"
+            >
+              <!-- Updated placeholder color -->
+              <img
+                src="https://placehold.co/150x150/F59E0B/FFFFFF?text=Brake+Sensor"
+                alt="Hydraulic Brake Sensor"
+                class="mx-auto mb-4 rounded-lg"
+              />
+              <h3 class="text-lg font-bold text-gray-900">
+                Hydraulic Brake Sensor Kit
+              </h3>
+              <p class="text-gray-500 mb-4 text-sm">
+                Immediately cut motor power upon braking.
+              </p>
+              <span class="text-2xl font-bold text-primary">$69</span>
+            </div>
+            <!-- Accessory 4 -->
+            <div
+              class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-100 text-center hover:shadow-lg transition duration-300"
+            >
+              <!-- Updated placeholder color -->
+              <img
+                src="https://placehold.co/150x150/F59E0B/FFFFFF?text=Display"
+                alt="Smart Connect Display"
+                class="mx-auto mb-4 rounded-lg"
+              />
+              <h3 class="text-lg font-bold text-gray-900">
+                Smart Connect Display
+              </h3>
+              <p class="text-gray-500 mb-4 text-sm">
+                Full color screen with Bluetooth connectivity and detailed
+                metrics.
+              </p>
+              <span class="text-2xl font-bold text-primary">$99</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. Certificates Section (Updated index from 10 to 11) -->
+      <section id="certificates" class="py-20 lg:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              Certified Quality. Built for Peace of Mind.
+            </h2>
+            <p class="mt-4 text-xl text-gray-500">
+              The Vier Kit meets and exceeds global standards for safety,
+              quality, and environmental compliance.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-4xl mx-auto">
+            <!-- Certificate 1: CE -->
+            <div
+              class="p-4 rounded-xl text-center bg-white shadow-md border border-gray-200"
+            >
+              <div class="text-3xl text-primary font-bold mb-1">CE</div>
+              <p class="text-sm text-gray-600">European Conformity</p>
+            </div>
+            <!-- Certificate 2: RoHS -->
+            <div
+              class="p-4 rounded-xl text-center bg-white shadow-md border border-gray-200"
+            >
+              <div class="text-3xl text-primary font-bold mb-1">RoHS</div>
+              <p class="text-sm text-gray-600">Hazardous Substances</p>
+            </div>
+            <!-- Certificate 3: IP67 -->
+            <div
+              class="p-4 rounded-xl text-center bg-white shadow-md border border-gray-200"
+            >
+              <div class="text-3xl text-primary font-bold mb-1">IP67</div>
+              <p class="text-sm text-gray-600">Water & Dust Resistance</p>
+            </div>
+            <!-- Certificate 4: UL -->
+            <div
+              class="p-4 rounded-xl text-center bg-white shadow-md border border-gray-200"
+            >
+              <div class="text-3xl text-primary font-bold mb-1">UL</div>
+              <p class="text-sm text-gray-600">Battery Safety Standard</p>
+            </div>
+            <!-- Certificate 5: ISO -->
+            <div
+              class="p-4 rounded-xl text-center bg-white shadow-md border border-gray-200"
+            >
+              <div class="text-3xl text-primary font-bold mb-1">ISO</div>
+              <p class="text-sm text-gray-600">Manufacturing Quality</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. Pre-Order Campaign Timeline (Updated index from 11 to 12) -->
+      <section id="timeline" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              Your Vier Kit Pre-Order Timeline
+            </h2>
+            <p class="mt-4 text-xl text-gray-500">
+              Know exactly what happens after you reserve your kit. Transparency
+              every step of the way.
+            </p>
+          </div>
+
+          <div class="max-w-2xl mx-auto px-4">
+            <ol class="relative border-l border-amber-300 ml-4">
+              <!-- Timeline Item 1 -->
+              <li class="mb-10 ml-6 timeline-step">
+                <span
+                  class="absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-white bg-primary text-white font-bold text-lg"
+                  >1</span
+                >
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Pre-Order Reservation (Today)
+                </h3>
+                <p class="text-base text-gray-600">
+                  Your payment secures your place in the first production batch
+                  and locks in the discounted price.
+                </p>
+              </li>
+              <!-- Timeline Item 2 -->
+              <li class="mb-10 ml-6 timeline-step">
+                <span
+                  class="absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-white bg-primary/80 text-white font-bold text-lg"
+                  >2</span
+                >
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Component Finalization (Q4 2025)
+                </h3>
+                <p class="text-base text-gray-600">
+                  We finalize the bill of materials and secure all custom parts
+                  based on the confirmed pre-order volume.
+                </p>
+              </li>
+              <!-- Timeline Item 3 -->
+              <li class="mb-10 ml-6 timeline-step">
+                <span
+                  class="absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-white bg-primary/60 text-white font-bold text-lg"
+                  >3</span
+                >
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Mass Production Begins (Q4 2025 - Q1 2026)
+                </h3>
+                <p class="text-base text-gray-600">
+                  The first batch of the Vier Kit components, motors, and
+                  battery packs are manufactured and assembled.
+                </p>
+              </li>
+              <!-- Timeline Item 4 -->
+              <li class="mb-10 ml-6 timeline-step">
+                <span
+                  class="absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-white bg-primary/40 text-white font-bold text-lg"
+                  >4</span
+                >
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Quality Check & Shipping Prep (Q1 2026)
+                </h3>
+                <p class="text-base text-gray-600">
+                  Every single kit undergoes rigorous testing to ensure
+                  performance, durability, and certification compliance.
+                </p>
+              </li>
+              <!-- Timeline Item 5 (Last) -->
+              <li class="ml-6 timeline-step">
+                <span
+                  class="absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-white bg-primary/20 text-white font-bold text-lg"
+                  >5</span
+                >
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  Final Delivery (Early Q2 2026)
+                </h3>
+                <p class="text-base text-gray-600">
+                  Your Vier Kit arrives at your doorstep, ready for installation
+                  and your first electric ride!
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13. FAQ Section (Updated index from 12 to 13) -->
+      <section id="faq" class="py-20 lg:py-28 bg-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              Frequently Asked Questions
+            </h2>
+            <p class="mt-4 text-xl text-gray-500">
+              Everything you need to know about compatibility, installation, and
+              delivery.
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <!-- FAQ Item 1 -->
+            <details
+              class="bg-white p-6 rounded-xl shadow-lg border border-gray-200"
+            >
+              <summary
+                class="flex items-center justify-between font-semibold text-lg text-gray-900 hover:text-primary transition duration-200"
+              >
+                Is the Vier Kit compatible with my bicycle?
+              </summary>
+              <div class="mt-4 pt-4 border-t border-gray-100 text-gray-700">
+                <p>
+                  The Vier Kit is designed to fit most standard bicycle frames
+                  with a <strong>68mm to 73mm bottom bracket shell</strong>.
+                  This covers the vast majority of mountain bikes, road bikes,
+                  and commuter bikes. It is not compatible with bikes that use
+                  proprietary or non-standard bottom brackets (like press-fit or
+                  fat bikes).
+                </p>
+              </div>
+            </details>
+
+            <!-- FAQ Item 2 -->
+            <details
+              class="bg-white p-6 rounded-xl shadow-lg border border-gray-200"
+            >
+              <summary
+                class="flex items-center justify-between font-semibold text-lg text-gray-900 hover:text-primary transition duration-200"
+              >
+                How difficult is the installation process?
+              </summary>
+              <div class="mt-4 pt-4 border-t border-gray-100 text-gray-700">
+                <p>
+                  We designed the Vier Kit for easy, DIY installation. If you
+                  can replace a crankset, you can install this kit. On average,
+                  users complete the installation in
+                  <strong>under an hour</strong>. We provide all necessary
+                  custom tools and clear, step-by-step video guides (see the
+                  <a
+                    href="#videos"
+                    class="text-primary hover:underline font-medium"
+                    >Installation section</a
+                  >).
+                </p>
+              </div>
+            </details>
+
+            <!-- FAQ Item 3 -->
+            <details
+              class="bg-white p-6 rounded-xl shadow-lg border border-gray-200"
+            >
+              <summary
+                class="flex items-center justify-between font-semibold text-lg text-gray-900 hover:text-primary transition duration-200"
+              >
+                What is the warranty period for the kit?
+              </summary>
+              <div class="mt-4 pt-4 border-t border-gray-100 text-gray-700">
+                <p>
+                  The Vier Kit motor and battery are covered by a comprehensive
+                  <strong>2-year warranty</strong> against manufacturing
+                  defects. The warranty covers parts and labor for repair or
+                  replacement. Display and accessories are covered for one year.
+                </p>
+              </div>
+            </details>
+
+            <!-- FAQ Item 4 -->
+            <details
+              class="bg-white p-6 rounded-xl shadow-lg border border-gray-200"
+            >
+              <summary
+                class="flex items-center justify-between font-semibold text-lg text-gray-900 hover:text-primary transition duration-200"
+              >
+                When will the pre-ordered kits be shipped?
+              </summary>
+              <div class="mt-4 pt-4 border-t border-gray-100 text-gray-700">
+                <p>
+                  Kits purchased in the current Batch 1 pre-order window are
+                  scheduled to complete final assembly and quality checks by
+                  <strong>Q1 2026</strong>, with final delivery estimated for
+                  <strong>Early Q2 2026</strong>. Please refer to the
+                  <a
+                    href="#timeline"
+                    class="text-primary hover:underline font-medium"
+                    >Campaign Timeline</a
+                  >
+                  for more details.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 14. Final CTA (Updated index from 13 to 14) -->
+      <section class="py-20 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+            The Pre-Order Special Ends Soon. Don't Miss Out.
+          </h2>
+          <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">
+            Secure the Vier Kit at the lowest price it will ever be offered.
+          </p>
+          <a
+            href="#order-kit"
+            class="inline-flex items-center justify-center px-12 py-4 border border-transparent text-lg font-bold rounded-xl text-dark-bg bg-primary hover:bg-accent transition transform hover:scale-[1.02] shadow-2xl shadow-black/20 text-white"
+          >
+            Pre-Order Now
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- 15. Footer (Updated index from 14 to 15) -->
+    <footer class="bg-dark-bg text-gray-300 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+          <!-- Column 1: Logo & Mission -->
+          <div class="col-span-2 md:col-span-2">
+            <a
+              href="#"
+              class="flex items-center text-2xl font-extrabold text-white tracking-tight mb-4"
+            >
+              <svg
+                class="w-6 h-6 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                ></path>
+              </svg>
+              Vier Kit
+            </a>
+            <p class="text-sm text-gray-500">
+              Convert your bike, conquer the road. High-performance e-bike kits.
+            </p>
+            <div class="flex space-x-4 mt-6">
+              <a href="#" class="text-gray-400 hover:text-primary transition">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.417 2.865 8.165 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.156-1.11-1.47-1.11-1.47-.908-.62.072-.606.072-.606 1.008.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.116-4.555-4.945 0-1.092.39-1.983 1.029-2.682-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.544 9.544 0 0112 5.017c.85.006 1.70.112 2.502.324 1.902-1.296 2.747-1.027 2.747-1.027.546 1.378.202 2.396.1 2.647.64.699 1.03 1.59.103 2.682 0 3.83-2.336 4.681-4.566 4.935.359.307.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.577.688.484C19.14 20.18 22 16.432 22 12.017 22 6.484 17.522 2 12 2z"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-primary transition">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.528-4 0v5.604h-3v-11h3v1.765c1.395-2.768 7-2.735 7 2.222v7.013z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Column 2: Product (Updated) -->
+          <div>
+            <h4 class="text-base font-semibold text-white mb-4">Product</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#features"
+                  class="text-sm text-gray-400 hover:text-white transition"
+                  >Key Features</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#mobile-app"
+                  class="text-sm text-gray-400 hover:text-white transition"
+                  >Mobile App</a
+                >
+              </li>
+              <!-- UPDATED LINK -->
+              <li>
+                <a
+                  href="#gallery"
+                  class="text-sm text-gray-400 hover:text-white transition"
+                  >Product Gallery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#videos"
+                  class="text-sm text-gray-400 hover:text-white transition"
+                  >Installation Videos</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Company -->
+          <div>
+            <h4 class="text-base font-semibold text-white mb-4">
+              Trust & Logistics
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#certificates"
+                  class="text-sm text-gray-400 hover:text-white transition"
+                  >Certificates</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#timeline"
+                  class="text-sm text-gray-400 hover:text-white transition"
+                  >Campaign Timeline</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#testimonials"
+                  class="text-sm text-gray-400 hover:text-white transition"
+                  >Reviews</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#faq"
+                  class="text-sm text-gray-400 hover:text-white transition"
+                  >FAQ</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Support -->
+          <div>
+            <h4 class="text-base font-semibold text-white mb-4">Support</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#order-kit"
+                  class="text-sm text-gray-400 hover:text-white transition"
+                  >Pre-Order Status</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-gray-400 hover:text-white transition"
+                  >Warranty</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-gray-400 hover:text-white transition"
+                  >Contact Support</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 border-t border-gray-800 pt-8 text-center">
+          <p class="text-sm text-gray-500">
+            &copy; 2025 Vier Kit, Inc. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
