@@ -3,7 +3,7 @@
   --yellow:#FFCA05;
   --purple:#7346FF;
   --teal:#22CFCA;
-  --ink:#0F1114;
+  --ink:#000000;
   --ink-2:#1c1f24;
   --muted:#6b7280;
   --bg:#ffffff;
@@ -48,19 +48,19 @@ body{
 /* Buttons */
 .btn{display:inline-block; padding:12px 18px; border-radius:999px; text-decoration:none; font-weight:600; border:1px solid transparent}
 .btn-sm{padding:8px 14px; font-size:14px}
-.btn-primary{background:var(--ink); color:#fff}
+.btn-primary{background:var(--yellow); color:#111}
 .btn-primary:hover{opacity:.9}
 .btn-secondary{background:var(--yellow); color:#111}
-.btn-ghost{background:transparent; color:var(--ink); border-color:#d7dbe2}
+.btn-ghost{background:black; color:var(--white); border-color:#d7dbe2}
 .btn-block{width:100%}
 
 /* Hero */
-.hero{padding:48px 0 24px; background:linear-gradient(180deg,#0f1117 0%, #181b22 100%); color:#fff}
+.hero{padding:0px 0 24px; background:black; color:#fff}
 .hero-card{
   display:grid; grid-template-columns:1.05fr 1fr; gap:24px;
-  background:radial-gradient(1200px 400px at 10% 10%, rgba(255,255,255,.08), transparent);
-  border-radius:var(--radius); padding:32px;
-  border:1px solid rgba(255,255,255,.08);
+  background: transparent;
+  border-radius:0;
+  border:none;
 }
 .hero-left .hero-kicker{font-size:40px; margin:0 0 8px}
 .hero-sub{display:flex; align-items:center; gap:12px; color:#cbd5e1; font-weight:600; letter-spacing:.5px}
@@ -76,6 +76,14 @@ body{
     linear-gradient(180deg,#2b2f36,#0f1117);
   border:1px solid rgba(255,255,255,.08);
 }
+.hero-image {
+  width: 100%;
+  height: auto;
+  border-radius: 0px;
+  object-fit: cover;
+  border: none;
+}
+
 @media (max-width: 900px){
   .hero-card{grid-template-columns:1fr}
   .hero-left .hero-kicker{font-size:32px}

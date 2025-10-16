@@ -1,161 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VierKit — Pre‑Order</title>
-  <meta name="description" content="Pre‑order VierKit: convert your bike to eBike in 3 steps. Natural AI PAS, compact design, mobile app.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#" class="logo">VierKit</a>
-      <nav class="nav">
-        <a href="#features">Features</a>
-        <a href="#install">3‑Step Install</a>
-        <a href="#app">Mobile App</a>
-      </nav>
-      <a href="#preorder" class="btn btn-sm btn-primary">Pre‑order</a>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-card">
-        <div class="hero-left">
-          <h1 class="hero-kicker">YOUR BIKE</h1>
-          <div class="hero-sub">
-            <span class="hero-date">30.10.25</span>
-            <span class="hero-divider"></span>
-            <span class="hero-power">POWER BY</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VierKit — Pre‑Order</title>
+    <meta
+      name="description"
+      content="Pre‑order VierKit: convert your bike to eBike in 3 steps. Natural AI PAS, compact design, mobile app."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <img src="ldp-u.png" alt="VierKit eBike Banner" class="hero-image" />
+        <div class="hero-card">
+          <div class="hero-left">
+            <p class="hero-copy">
+              Turn any bike into a powerful, natural‑feeling eBike. Limited
+              pre‑order window.
+            </p>
+            <div class="hero-ctas">
+              <a href="#preorder" class="btn btn-primary">Pre‑order now</a>
+              <a href="#features" class="btn btn-ghost">See features</a>
+            </div>
           </div>
-          <div class="hero-brand">VIER KIT</div>
-          <p class="hero-copy">Turn any bike into a powerful, natural‑feeling eBike. Limited pre‑order window.</p>
-          <div class="hero-ctas">
-            <a href="#preorder" class="btn btn-primary">Pre‑order now</a>
-            <a href="#features" class="btn btn-ghost">See features</a>
+          <div class="hero-right">
+            <div class="hero-right"></div>
           </div>
         </div>
-        <div class="hero-right">
-          <!-- Replace this with a real hero image of the bike/kit -->
-          <div class="img hero-image" aria-label="VierKit hero image"></div>
+      </div>
+    </section>
+
+    <!-- 3 Step Install -->
+    <section id="install" class="section">
+      <div class="container grid-2 gap-lg align-center">
+        <div
+          class="img img-yellow img-bike"
+          aria-label="Install illustration"
+        ></div>
+        <div>
+          <div class="heading-row">
+            <div class="num">3</div>
+            <h2>Step install</h2>
+          </div>
+          <ul class="bullets">
+            <li>Không ảnh hưởng khung xe</li>
+            <li>Phù hợp 90% các loại xe</li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 3 Step Install -->
-  <section id="install" class="section">
-    <div class="container grid-2 gap-lg align-center">
-      <div class="img img-yellow img-bike" aria-label="Install illustration"></div>
-      <div>
-        <div class="heading-row">
-          <div class="num">3</div>
-          <h2>Step install</h2>
+    <!-- AI PAS + Kit Visual -->
+    <section id="features" class="section section-split">
+      <div class="container split">
+        <div class="split-left">
+          <h3 class="eyebrow">AI PAS</h3>
+          <ul class="bullets">
+            <li>Trải nghiệm đạp chân thật</li>
+            <li>Lắp đặt dễ dàng</li>
+          </ul>
         </div>
-        <ul class="bullets">
-          <li>Không ảnh hưởng khung xe</li>
-          <li>Phù hợp 90% các loại xe</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- AI PAS + Kit Visual -->
-  <section id="features" class="section section-split">
-    <div class="container split">
-      <div class="split-left">
-        <h3 class="eyebrow">AI PAS</h3>
-        <ul class="bullets">
-          <li>Trải nghiệm đạp chân thật</li>
-          <li>Lắp đặt dễ dàng</li>
-        </ul>
-      </div>
-      <div class="split-right">
-        <div class="img img-yellow img-hub" aria-label="Hub motor photo"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Mobile App -->
-  <section id="app" class="section">
-    <div class="container grid-2 gap-lg align-center reverse-on-mobile">
-      <div class="img img-yellow img-app" aria-label="Mobile app mockup"></div>
-      <div>
-        <h2>Mobile App</h2>
-        <ul class="bullets">
-          <li>Cá nhân hoá mức trợ lực</li>
-          <li>Tối ưu trải nghiệm đạp xe</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Enjoy banner -->
-  <section class="enjoy">
-    <div class="container enjoy-inner">
-      <div class="img enjoy-image" aria-label="Bike on road"></div>
-      <div class="enjoy-text">
-        <div class="enjoy-headline">Enjoy <span>your ride</span></div>
-        <a id="preorder" href="#form" class="btn btn-secondary">Pre‑order VierKit</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Preorder form (lightweight placeholder) -->
-  <section id="form" class="section form-section">
-    <div class="container">
-      <h2 class="center">Pre‑order now</h2>
-      <p class="center sub">Secure your kit in the first batch. Limited quantity.</p>
-      <form class="form" onsubmit="event.preventDefault(); alert('Thanks! We will contact you shortly.');">
-        <div class="form-grid">
-          <label>Full name
-            <input type="text" required placeholder="Nguyen Van A" />
-          </label>
-          <label>Email
-            <input type="email" required placeholder="you@example.com" />
-          </label>
-          <label>Phone
-            <input type="tel" required placeholder="+84 ..." />
-          </label>
-          <label>Bike type
-            <select required>
-              <option value="">Select…</option>
-              <option>Road</option>
-              <option>MTB</option>
-              <option>Hybrid/City</option>
-              <option>Folding</option>
-            </select>
-          </label>
-          <label>Quantity
-            <input type="number" min="1" value="1" />
-          </label>
-          <label>City
-            <input type="text" placeholder="Hà Nội, TP.HCM, Đà Nẵng…" />
-          </label>
+        <div class="split-right">
+          <div
+            class="img img-yellow img-hub"
+            aria-label="Hub motor photo"
+          ></div>
         </div>
-        <label>Notes
-          <textarea rows="4" placeholder="Anything else we should know?"></textarea>
-        </label>
-        <button class="btn btn-primary btn-block" type="submit">Submit pre‑order</button>
-      </form>
-    </div>
-  </section>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>© 2025 VierCycle — VierKit</div>
-      <div class="footer-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Contact</a>
       </div>
-    </div>
-  </footer>
-</body>
+    </section>
+
+    <!-- Mobile App -->
+    <section id="app" class="section">
+      <div class="container grid-2 gap-lg align-center reverse-on-mobile">
+        <div
+          class="img img-yellow img-app"
+          aria-label="Mobile app mockup"
+        ></div>
+        <div>
+          <h2>Mobile App</h2>
+          <ul class="bullets">
+            <li>Cá nhân hoá mức trợ lực</li>
+            <li>Tối ưu trải nghiệm đạp xe</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enjoy banner -->
+    <section class="enjoy">
+      <div class="container enjoy-inner">
+        <div class="img enjoy-image" aria-label="Bike on road"></div>
+        <div class="enjoy-text">
+          <div class="enjoy-headline">Enjoy <span>your ride</span></div>
+          <a id="preorder" href="#form" class="btn btn-secondary"
+            >Pre‑order VierKit</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Preorder form (lightweight placeholder) -->
+    <section id="form" class="section form-section">
+      <div class="container">
+        <h2 class="center">Pre‑order now</h2>
+        <p class="center sub">
+          Secure your kit in the first batch. Limited quantity.
+        </p>
+        <form
+          class="form"
+          onsubmit="event.preventDefault(); alert('Thanks! We will contact you shortly.');"
+        >
+          <div class="form-grid">
+            <label
+              >Full name
+              <input type="text" required placeholder="Nguyen Van A" />
+            </label>
+            <label
+              >Email
+              <input type="email" required placeholder="you@example.com" />
+            </label>
+            <label
+              >Phone
+              <input type="tel" required placeholder="+84 ..." />
+            </label>
+            <label
+              >Bike type
+              <select required>
+                <option value="">Select…</option>
+                <option>Road</option>
+                <option>MTB</option>
+                <option>Hybrid/City</option>
+                <option>Folding</option>
+              </select>
+            </label>
+            <label
+              >Quantity
+              <input type="number" min="1" value="1" />
+            </label>
+            <label
+              >City
+              <input type="text" placeholder="Hà Nội, TP.HCM, Đà Nẵng…" />
+            </label>
+          </div>
+          <label
+            >Notes
+            <textarea
+              rows="4"
+              placeholder="Anything else we should know?"
+            ></textarea>
+          </label>
+          <button class="btn btn-primary btn-block" type="submit">
+            Submit pre‑order
+          </button>
+        </form>
+      </div>
+    </section>
+  </body>
 </html>
