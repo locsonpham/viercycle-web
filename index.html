@@ -1,1161 +1,259 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Vier Kit – Chuyển đổi eBike trong 10 phút</title>
-    <meta
-      name="description"
-      content="VierKit: plug-and-play eBike conversion kit by VierCycle. Install in minutes. Lighter, faster, affordable, and eco-friendly."
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIERSKY | eMobility Tech Leader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap");
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .text-vier {
+        color: #ffd700;
+      }
+      .bg-vier {
+        background-color: #ffd700;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .tech-card:hover {
+        border-color: #ffd700;
+        transform: translateY(-5px);
+        transition: all 0.3s ease;
+      }
+    </style>
   </head>
-  <body>
-    <!-- Header -->
-    <header class="site-header">
-      <div class="container">
-        <a class="logo" href="#home">VierCycle</a>
-        <nav class="nav">
-          <a href="#features">Tính năng</a>
-          <a href="#specs">Sức mạnh</a>
-          <a href="#how">Lắp đặt</a>
-          <a href="#pricing">Đặt hàng trước</a>
-          <a href="#dealers">Đại lý</a>
-          <a href="#faq">FAQ</a>
-          <a class="btn btn-primary btn-sm" href="#buy">Mua VierKit</a>
-        </nav>
-        <button
-          class="nav-toggle"
-          aria-label="Toggle menu"
-          aria-expanded="false"
+  <body class="bg-[#050505] text-white">
+    <nav class="fixed w-full z-50 glass py-4">
+      <div class="container mx-auto px-6 flex justify-between items-center">
+        <div class="text-3xl font-black tracking-tighter text-vier">
+          VIER<span class="text-white">SKY</span>
+        </div>
+        <div
+          class="hidden md:flex space-x-10 text-[11px] uppercase tracking-[0.2em] font-bold"
         >
-          ☰
+          <a href="#esc" class="hover:text-vier transition">Technology</a>
+          <a href="#bms" class="hover:text-vier transition">Systems</a>
+          <a
+            href="#partnership"
+            class="hover:text-vier transition text-vier border-b border-vier"
+            >Partnership</a
+          >
+        </div>
+        <button
+          class="bg-white text-black px-6 py-2 rounded-full font-bold text-xs hover:bg-vier transition"
+        >
+          GET IN TOUCH
         </button>
       </div>
-    </header>
-
-    <!-- Hero -->
-    <section id="home" class="section hero">
-      <div class="container grid-2">
-        <div class="hero-copy">
-          <h1>
-            Chuyển đổi eBike toàn diện trong <span class="hl">10 phút</span>
-          </h1>
-          <p class="lead">
-            Với <strong>Vier Kit</strong>—bộ chuyển đổi eBike cắm và chạy. Giữ
-            xe đạp yêu quý của bạn, thêm hỗ trợ điện và tận hưởng những chuyến
-            đi nhẹ nhàng, nhanh chóng, thân thiện với môi trường.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#buy">Mua VierKit</a>
-            <a class="btn btn-ghost" href="#video">Xem video lắp đặt</a>
-          </div>
-          <ul class="hero-bullets">
-            <li>Hỗ trợ lên đến 90% xe đạp</li>
-            <li>Pin Li-Ion, sức mạnh động cơ 250W</li>
-            <li>Tiết kiệm 50% so với xe đạp điện mới</li>
-          </ul>
-        </div>
-
-        <!-- Hero Carousel -->
-        <div class="hero-media">
-          <section class="hero-carousel" aria-label="VierKit product carousel">
-            <div class="hc-viewport">
-              <div class="hc-track">
-                <!-- Slide 1 -->
-                <article
-                  class="hc-slide"
-                  aria-roledescription="slide"
-                  aria-label="1 of 3"
-                >
-                  <figure class="hc-card">
-                    <header class="hc-head">
-                      <div class="hc-dots">
-                        <span></span><span></span><span></span>
-                      </div>
-                      <h3>VierKit</h3>
-                      <p>
-                        Hub motor + AIO Controller. Dây điện gọn gàng, lắp đặt
-                        nhanh chóng
-                      </p>
-                    </header>
-                    <div class="hc-media">
-                      <img
-                        class="hc-photo"
-                        src="vierkit-hero-800.jpg"
-                        alt="VierKit product"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                  </figure>
-                </article>
-
-                <!-- Slide 2 -->
-                <article
-                  class="hc-slide"
-                  aria-roledescription="slide"
-                  aria-label="2 of 3"
-                >
-                  <figure class="hc-card">
-                    <header class="hc-head">
-                      <div class="hc-dots">
-                        <span></span><span></span><span></span>
-                      </div>
-                      <h3>Battery 36V 10Ah</h3>
-                      <p>21700 Li-ion • BMS thông minh • Sạc nhanh</p>
-                    </header>
-                    <div class="hc-media">
-                      <img
-                        class="hc-photo"
-                        src="vierkit-hero-800.jpg"
-                        alt="VierKit product"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                  </figure>
-                </article>
-
-                <!-- Slide 3 -->
-                <article
-                  class="hc-slide"
-                  aria-roledescription="slide"
-                  aria-label="3 of 3"
-                >
-                  <figure class="hc-card">
-                    <header class="hc-head">
-                      <div class="hc-dots">
-                        <span></span><span></span><span></span>
-                      </div>
-                      <h3>Display &amp; Controls</h3>
-                      <p>Chế độ trợ lực • Tốc độ • Pin • QR/NFC (tuỳ chọn)</p>
-                    </header>
-                    <div class="hc-media">
-                      <img
-                        class="hc-photo"
-                        src="vierkit-hero-800.jpg"
-                        alt="VierKit product"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                  </figure>
-                </article>
-              </div>
-            </div>
-
-            <!-- Controls -->
-            <button class="hc-nav hc-prev" aria-label="Previous slide">
-              ❮
-            </button>
-            <button class="hc-nav hc-next" aria-label="Next slide">❯</button>
-
-            <!-- Pagination -->
-            <div
-              class="hc-pagers"
-              role="tablist"
-              aria-label="Carousel Pagination"
-            >
-              <button
-                class="hc-dot"
-                role="tab"
-                aria-selected="true"
-                aria-controls="hc-slide-1"
-              ></button>
-              <button
-                class="hc-dot"
-                role="tab"
-                aria-selected="false"
-                aria-controls="hc-slide-2"
-              ></button>
-              <button
-                class="hc-dot"
-                role="tab"
-                aria-selected="false"
-                aria-controls="hc-slide-3"
-              ></button>
-            </div>
-          </section>
-        </div>
-      </div>
-    </section>
-
-    <!-- Value Propositions Section -->
-    <section id="value-propositions" class="vp-section">
-      <div class="container">
-        <header class="vp-head">
-          <h2>Giá trị cốt lõi từ VierCycle</h2>
-          <p class="subhead">
-            Mang lại giải pháp di chuyển xanh, thông minh và bền vững cho mọi
-            người.
-          </p>
-        </header>
-
-        <div class="vp-grid">
-          <!-- Proposition 1 -->
-          <article class="vp-card">
-            <div class="vp-icon">⚡</div>
-            <h3>Dễ dàng chuyển đổi</h3>
-            <p>
-              Biến chiếc xe đạp cũ thành eBike trong 10 phút, không cần kỹ thuật
-              phức tạp. Phù hợp 90% xe đạp phổ biến.
-            </p>
-          </article>
-
-          <!-- Proposition 2 -->
-          <article class="vp-card">
-            <div class="vp-icon">🌱</div>
-            <h3>Di chuyển xanh</h3>
-            <p>
-              Tiết kiệm chi phí, giảm phát thải CO₂ và đóng góp vào giao thông
-              đô thị thân thiện môi trường.
-            </p>
-          </article>
-
-          <!-- Proposition 3 -->
-          <article class="vp-card">
-            <div class="vp-icon">🚲</div>
-            <h3>Kết nối &amp; bền vững</h3>
-            <p>
-              Xây dựng hệ sinh thái eMobility thông minh, kết nối người dùng –
-              đại lý – du lịch địa phương.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stats strip -->
-    <section class="section strip">
-      <div class="container stats">
-        <div class="stat">
-          <span class="stat-num" data-target="500">0</span
-          ><span class="stat-label">Kits đã bán</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num" data-target="500">0</span
-          ><span class="stat-label">Khách hàng hài lòng</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num" data-target="18">0</span
-          ><span class="stat-label">Tấn CO₂ đã tiết kiệm</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num" data-target="5">0</span
-          ><span class="stat-label">Quốc gia</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Video Reviews – Side Label + Three Rows -->
-    <section id="video-reviews" class="vr-section">
-      <div class="vr-wrap">
-        <!-- Left vertical label -->
-        <aside class="vr-label" aria-hidden="true">
-          <span class="vr-label-fade">VIDEO</span>
-          <span class="vr-label-strong">REVIEW</span>
-        </aside>
-
-        <!-- Right content -->
-        <div class="vr-list">
-          <!-- Item 1 -->
-          <article class="vr-item">
-            <a
-              class="vr-thumb"
-              href="https://www.youtube.com/watch?v=VIDEO_ID_1"
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                src="thumb-stella.jpg"
-                alt="Nâng cấp xe Asama thành xe đạp điện công nghệ"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="vr-play">▶</span>
-            </a>
-            <h3 class="vr-title">
-              Nâng cấp chiếc Asama thành xe đạp điện công nghệ
-            </h3>
-          </article>
-
-          <!-- Item 2 -->
-          <article class="vr-item">
-            <a
-              class="vr-thumb"
-              href="https://www.youtube.com/watch?v=VIDEO_ID_2"
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                src="thumb-commute.jpg"
-                alt="U60 Đạp Xe 20KM Đi Làm Mỗi Ngày - Bí Quyết Duy Trì Đam Mê"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="vr-play">▶</span>
-            </a>
-            <h3 class="vr-title">
-              U60 Đạp Xe 20KM Đi Làm Mỗi Ngày – Bí Quyết Duy Trì Đam Mê
-            </h3>
-          </article>
-
-          <!-- Item 3 -->
-          <article class="vr-item">
-            <a
-              class="vr-thumb"
-              href="https://www.youtube.com/watch?v=VIDEO_ID_3"
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                src="thumb-greenpoint.jpg"
-                alt="VierCycle Giải Pháp Xe Đạp Công Nghệ Cho Lối Sống Xanh Bền Vững"
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="vr-play">▶</span>
-            </a>
-            <h3 class="vr-title">
-              VierCycle Giải Pháp Xe Đạp Công Nghệ Cho Lối Sống Xanh Bền Vững
-            </h3>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features -->
-    <section id="features" class="section">
-      <div class="container">
-        <header class="section-head">
-          <h2>Vì sao khách hàng lựa chọn Vier Kit</h2>
-          <p class="subhead">
-            Giữ xe đạp yêu quý của bạn — nâng cấp trải nghiệm đạp xe toàn diện.
-          </p>
-        </header>
-
-        <div class="grid-3 features">
-          <article class="feature">
-            <div class="feature-icon">⚡</div>
-            <h3>Cảm giác đạp tự nhiên</h3>
-            <p>
-              Cảm biến mượt mà và chương trình AI cho cảm giác đạp tốt nhất.
-            </p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon">🧩</div>
-            <h3>Plug & play</h3>
-            <p>
-              Dây điện được định hình sẵn và bộ điều khiển nhỏ gọn cho việc lắp
-              đặt gọn gàng.
-            </p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon">🌿</div>
-            <h3>Thân thiện với môi trường & tiết kiệm</h3>
-            <p>Chuyển đổi thay vì mua mới. Tiết kiệm tiền và giảm lãng phí.</p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon">💧</div>
-            <h3>Chuẩn bị cho hoạt động ngoài trời</h3>
-            <p>
-              Thiết kế chống thời tiết cho việc đi lại hàng ngày và những chuyến
-              đi cuối tuần.
-            </p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon">📱</div>
-            <h3>Kết nối thông minh</h3>
-            <p>
-              Ứng dụng miễn phí giúp theo dõi và tùy chỉnh trải nghiệm của bạn.
-            </p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon">🛠️</div>
-            <h3>Dễ bảo trì</h3>
-            <p>
-              Các thành phần mô-đun với sự hỗ trợ của đại lý và phụ tùng thay
-              thế.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Specs -->
-    <section id="specs" class="section section-alt">
-      <div class="container">
-        <header class="section-head">
-          <h2>Thông số kỹ thuật</h2>
-          <p class="subhead">
-            Hiệu suất cân bằng cho việc đi lại trong thành phố và du lịch nhẹ.
-          </p>
-        </header>
-
-        <div class="specs-grid">
-          <div class="spec-card">
-            <h4>Pin</h4>
-            <p>
-              10Ah Li-ion (21700 cells), mạch bảo vệ, sạc thông minh, chống
-              nước.
-            </p>
-          </div>
-          <div class="spec-card">
-            <h4>Bánh xe động cơ</h4>
-            <p>Bánh xe động cơ 250W, hiệu suất cao, hoạt động êm ái.</p>
-          </div>
-          <div class="spec-card">
-            <h4>Bộ điều khiển AIO</h4>
-            <p>Bộ điều khiển nhỏ gọn, PAS mượt mà, IP66</p>
-          </div>
-          <div class="spec-card">
-            <h4>Kết nối</h4>
-            <p>Ứng dụng di động miễn phí thông qua Bluetooth.</p>
-          </div>
-          <div class="spec-card">
-            <h4>Tương thích</h4>
-            <p>700C/26–29” wheels, 100mm O.L.D., V-brake/disc. ~90% xe đạp.</p>
-          </div>
-          <div class="spec-card">
-            <h4>Phạm vi</h4>
-            <p>
-              Lên đến 60 - 100 km mỗi lần sạc (chế độ tiết kiệm, phụ thuộc vào
-              người lái/địa hình).
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Install -->
-    <section id="how" class="section">
-      <div class="container">
-        <header class="section-head">
-          <h2>Lắp đặt chỉ với 3 bước đơn giản</h2>
-          <p class="subhead">Không cần dụng cụ đặc biệt.</p>
-        </header>
-        <ol class="steps">
-          <li>
-            <span>1</span> Thay thế bánh trước của bạn bằng bánh xe động cơ Vier
-            Kit.
-          </li>
-          <li><span>2</span> Lắp đặt cảm biến đa năng, bật nguồn và đi xe.</li>
-          <li>
-            <span>3</span> Lắp bộ điều khiển AIO và định tuyến các cáp đã được
-            gán nhãn trước.
-          </li>
-        </ol>
-
-        <div id="video" class="video-frame">
-          <div class="video-wrapper">
-            <iframe
-              src="http://www.youtube.com/embed/4aQwT3n2c1Q"
-              height="315"
-              width="560"
-              allowfullscreen=""
-              frameborder="0"
-            >
-            </iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Feature Banners (3 items) ===== -->
-    <section id="feature-banners" class="fb-section">
-      <div class="fb-row">
-        <figure class="fb-media">
-          <img
-            src="feature-1.jpg"
-            alt="Natural assist feel when riding with VierKit"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-        <div class="fb-body">
-          <h2 class="fb-title">Natural assist you’ll love</h2>
-          <p class="fb-text">
-            Smooth, torque-sensed power that keeps your cadence natural. Climb
-            hills and cruise city streets without losing that “analog bike”
-            feel.
-          </p>
-        </div>
-      </div>
-
-      <div class="fb-row fb-row--reverse">
-        <figure class="fb-media">
-          <img
-            src="feature-2.jpg"
-            alt="Plug-and-play installation with clean wiring"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-        <div class="fb-body">
-          <h2 class="fb-title">Plug-and-play in minutes</h2>
-          <p class="fb-text">
-            Pre-terminated harnesses, labeled connectors, and a compact
-            controller. Most riders install VierKit in about 10 minutes with
-            basic tools.
-          </p>
-        </div>
-      </div>
-
-      <div class="fb-row">
-        <figure class="fb-media">
-          <img
-            src="feature-3.jpg"
-            alt="Greener commuting with long range battery"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-        <div class="fb-body">
-          <h2 class="fb-title">Greener, longer rides</h2>
-          <p class="fb-text">
-            36 V 10 Ah battery with up to 60–80 km range (eco mode). Convert
-            your current bike—save money and cut CO₂ without buying new.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pricing -->
-    <section id="pricing" class="section">
-      <div class="container">
-        <header class="section-head">
-          <h2>Giá cả siêu tốt</h2>
-          <p class="subhead">Tùy chọn linh hoạt cho mọi nhu cầu.</p>
-        </header>
-
-        <div class="grid-3 pricing">
-          <div class="card">
-            <h3>Cơ bản</h3>
-            <p class="price"><span>đ</span>3,990,000<span>/kit</span></p>
-            <ul class="list">
-              <li>Động cơ 250W</li>
-              <li>AIO Controller</li>
-              <li>Cảm biến VPAS</li>
-              <li>Bộ sạc pin</li>
-            </ul>
-            <a href="#buy" class="btn btn-outline">Đặt Cơ bản</a>
-          </div>
-
-          <div class="card card-featured">
-            <div class="badge">Best Value</div>
-            <h3>Tiêu chuẩn</h3>
-            <p class="price"><span>đ</span>4,990,000<span>/kit</span></p>
-            <ul class="list">
-              <li>Mọi thứ Cơ bản</li>
-              <li>Vành và căm tùy chọn</li>
-            </ul>
-            <a href="#buy" class="btn btn-primary">Đặt Tiêu chuẩn</a>
-          </div>
-
-          <div class="card">
-            <h3>Nâng cấp</h3>
-            <p class="price"><span>đ</span>5,990,000<span>/kit</span></p>
-            <ul class="list">
-              <li>Mọi thứ trong Tiêu chuẩn</li>
-              <li>Bảo hành mở rộng</li>
-            </ul>
-            <a href="#buy" class="btn btn-outline">Đặt Nâng cấp</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Video Reviews -->
-    <section id="reviews" class="section section-alt">
-      <div class="container">
-        <header class="section-head">
-          <h2>Video Tương tác</h2>
-          <p class="subhead">
-            Nghe mọi người nói về trải nghiệm của họ với Vier Kit.
-          </p>
-        </header>
-
-        <div class="video-grid">
-          <!-- Card 1 -->
-          <article class="video-card">
-            <button
-              class="thumb"
-              data-video="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            >
-              <img
-                src="thumb-review-1.jpg"
-                width="640"
-                height="360"
-                loading="lazy"
-                decoding="async"
-                alt="VierKit review by TechDaily"
-              />
-              <span class="play">▶</span>
-            </button>
-            <h3 class="video-title">TechDaily: “Plug-and-play in minutes”</h3>
-            <div class="video-meta">6:12 · 120k views</div>
-          </article>
-
-          <!-- Card 2 -->
-          <article class="video-card">
-            <button
-              class="thumb"
-              data-video="https://www.youtube.com/embed/VIDEO_ID_2"
-            >
-              <img
-                src="thumb-review-2.jpg"
-                width="640"
-                height="360"
-                loading="lazy"
-                decoding="async"
-                alt="VierKit commuter test"
-              />
-              <span class="play">▶</span>
-            </button>
-            <h3 class="video-title">Commuter Test: City hills & range</h3>
-            <div class="video-meta">8:47 · 54k views</div>
-          </article>
-
-          <!-- Card 3 -->
-          <article class="video-card">
-            <button
-              class="thumb"
-              data-video="https://www.youtube.com/embed/VIDEO_ID_3"
-            >
-              <img
-                src="thumb-review-3.jpg"
-                width="640"
-                height="360"
-                loading="lazy"
-                decoding="async"
-                alt="VierKit touring setup"
-              />
-              <span class="play">▶</span>
-            </button>
-            <h3 class="video-title">Touring Setup: 60–80 km rides</h3>
-            <div class="video-meta">5:31 · 32k views</div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Video Modal -->
-    <div
-      class="video-modal"
-      aria-hidden="true"
-      role="dialog"
-      aria-label="Video player"
-    >
-      <div class="video-modal__backdrop"></div>
-      <div class="video-modal__dialog" role="document">
-        <button class="video-modal__close" aria-label="Close video">✕</button>
-        <div class="video-modal__frame">
-          <!-- iframe injected here -->
-        </div>
-      </div>
-    </div>
-
-    <!-- Dealers -->
-    <section id="dealers" class="section section-alt">
-      <div class="container">
-        <header class="section-head">
-          <h2>Tìm đại lý</h2>
-          <p class="subhead">Tìm kiếm đại lý quanh bạn</p>
-        </header>
-        <div class="dealer-box">
-          <div class="dealer-text">
-            <h3>Đối tác toàn cầu</h3>
-            <p>
-              Chúng tôi đang phát triển một mạng lưới các nhà lắp đặt được chứng
-              nhận. Liên hệ với chúng tôi để trở thành đại lý.
-            </p>
-            <div class="dealer-actions">
-              <a href="#buy" class="btn btn-primary">Mua & Đặt lịch lắp đặt</a>
-              <a href="mailto:hello@viercycle.com" class="btn btn-ghost"
-                >Trở thành đại lý</a
-              >
-            </div>
-          </div>
-          <div
-            class="dealer-map"
-            role="img"
-            aria-label="Dealer locations placeholder"
-          >
-            <div class="pin" style="top: 55%; left: 68%"></div>
-            <div class="pin" style="top: 48%; left: 60%"></div>
-            <div class="pin" style="top: 40%; left: 35%"></div>
-            <div class="pin" style="top: 62%; left: 20%"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="section">
-      <div class="container">
-        <header class="section-head">
-          <h2>FAQ</h2>
-          <p class="subhead">Các câu hỏi thường gặp</p>
-        </header>
-
-        <div class="faq">
-          <details open>
-            <summary>Vier Kit có lắp vừa xe của tôi không?</summary>
-            <p>
-              Vier Kit tương thích với hầu hết các xe đạp có bánh trước 20–29”
-              (700C), trục 100mm, phanh V-brake hoặc đĩa. Xem trang specs để
-              biết
-            </p>
-          </details>
-          <details>
-            <summary>Thời gian sử dụng pin là bao lâu?</summary>
-            <p>
-              Lên đến 60–80 km mỗi lần sạc ở chế độ tiết kiệm, tùy thuộc vào
-              người lái, địa hình và gió.
-            </p>
-          </details>
-          <details>
-            <summary>Tôi có thể tự lắp đặt không?</summary>
-            <p>
-              Có—hầu hết người lái lắp đặt trong ~10 phút với các công cụ cơ
-              bản. Các đại lý có thể giúp nếu bạn muốn.
-            </p>
-          </details>
-          <details>
-            <summary>Vier Kit có chống nước không?</summary>
-            <p>
-              Các thành phần được thiết kế cho việc sử dụng ngoài trời với các
-              kết nối và vỏ bọc kín.
-            </p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- Press -->
-    <section id="press" class="section section-alt">
-      <div class="container">
-        <header class="section-head">
-          <h2>Truyền thông</h2>
-          <p class="subhead">
-            Các phương tiện truyền thông nói gì về Vier Kit.
-          </p>
-        </header>
-
-        <!-- Logos row (replace with real logos later) -->
-        <div class="press-logos">
-          <a class="logo-pill" href="#" aria-label="TechDaily">VN Express</a>
-          <a class="logo-pill" href="#" aria-label="StartHub">Thanh Niên</a>
-          <a class="logo-pill" href="#" aria-label="MakerMag">Tuổi Trẻ</a>
-        </div>
-
-        <!-- Article cards -->
-        <div class="press-cards">
-          <article class="press-card">
-            <a class="press-thumb" href="#" aria-label="Read TechDaily review">
-              <img
-                src="press-techdaily-640.jpg"
-                srcset="
-                  press-techdaily-320.jpg 320w,
-                  press-techdaily-640.jpg 640w,
-                  press-techdaily-960.jpg 960w
-                "
-                sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
-                width="640"
-                height="360"
-                loading="lazy"
-                decoding="async"
-                alt="VierKit feature photo on TechDaily"
-              />
-            </a>
-            <span class="press-outlet">TechDaily</span>
-            <h3 class="press-title">
-              <a href="#"
-                >“VierKit makes eBike conversion truly plug-and-play.”</a
-              >
-            </h3>
-            <p class="press-excerpt">
-              A compact kit with clean wiring, natural pedal assist, and a
-              10-minute install…
-            </p>
-            <div class="press-meta">Jan 18, 2025 · Review</div>
-          </article>
-
-          <article class="press-card">
-            <a class="press-thumb" href="#" aria-label="Read StartHub feature">
-              <img
-                src="press-starthub-640.jpg"
-                width="640"
-                height="360"
-                loading="lazy"
-                decoding="async"
-                alt="VierCycle founders in StartHub article"
-              />
-            </a>
-            <span class="press-outlet">StartHub</span>
-            <h3 class="press-title">
-              <a href="#"
-                >“The rising startup electrifying last-mile mobility.”</a
-              >
-            </h3>
-            <p class="press-excerpt">
-              VierCycle’s modular system lowers the barrier for everyday riders
-              across cities…
-            </p>
-            <div class="press-meta">Feb 03, 2025 · Feature</div>
-          </article>
-
-          <article class="press-card">
-            <a
-              class="press-thumb"
-              href="#"
-              aria-label="Read MakerMag interview"
-            >
-              <img
-                src="press-makermag-640.jpg"
-                width="640"
-                height="360"
-                loading="lazy"
-                decoding="async"
-                alt="Rider converting a bike with VierKit"
-              />
-            </a>
-            <span class="press-outlet">MakerMag</span>
-            <h3 class="press-title">
-              <a href="#"
-                >“From unused bikes to daily commuters—meet VierKit.”</a
-              >
-            </h3>
-            <p class="press-excerpt">
-              Why converting is greener and more affordable than buying a new
-              eBike…
-            </p>
-            <div class="press-meta">Mar 12, 2025 · Interview</div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Prizes -->
-    <section id="prizes" class="section">
-      <div class="container">
-        <header class="section-head">
-          <h2>Giải thưởng và Công nhận</h2>
-          <p class="subhead">
-            Những cột mốc xác thực sứ mệnh và công nghệ của chúng tôi.
-          </p>
-        </header>
-
-        <div class="award-grid">
-          <div class="award-card">
-            <div class="award-badge">🥇</div>
-            <h3 class="award-title">Green Innovation Contest</h3>
-            <div class="award-meta">2025 · National Sustainable Tech Forum</div>
-            <p class="award-desc">
-              Recognized for lowering CO₂ emissions through accessible eBike
-              conversions.
-            </p>
-          </div>
-
-          <div class="award-card">
-            <div class="award-badge">🏆</div>
-            <h3 class="award-title">Mobility Startup of the Year</h3>
-            <div class="award-meta">2025 · Urban Mobility Summit</div>
-            <p class="award-desc">
-              Honored for practical city-scale deployment and dealer ecosystem
-              strategy.
-            </p>
-          </div>
-
-          <div class="award-card">
-            <div class="award-badge">⭐</div>
-            <h3 class="award-title">Design Excellence</h3>
-            <div class="award-meta">2024 · Product Design Week</div>
-            <p class="award-desc">
-              Awarded for compact form factor, clean wiring, and easy user
-              installation.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section id="buy" class="section cta">
-      <div class="container">
-        <h2>Bạn đã sẵn sàng chuyển đổi eBike?</h2>
-        <p class="subhead">
-          Nhập email của bạn - chúng tôi sẽ liên hệ với bạn về các tùy chọn mua
-          hàng và lắp đặt.
-        </p>
-        <form
-          class="cta-form"
-          onsubmit="event.preventDefault(); alert('Thanks! We will contact you.');"
-        >
-          <input type="email" placeholder="you@example.com" required />
-          <button class="btn btn-primary" type="submit">Mua VierKit</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <div class="logo">VierCycle</div>
-          <p class="muted">
-            © <span id="y"></span> VierCycle. Ride with Ease – Go Green.
-          </p>
-        </div>
-        <nav class="footer-nav">
-          <a href="#features">Features</a>
-          <a href="#specs">Specs</a>
-          <a href="#how">Install</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#dealers">Dealers</a>
-          <a href="#buy">Buy</a>
-        </nav>
-      </div>
-    </footer>
-
-    <!-- Sticky Mobile CTA -->
-    <nav class="mobile-cta" role="region" aria-label="Quick actions">
-      <a href="#buy" class="btn btn-primary">Mua VierKit</a>
-      <!-- <a href="#dealers" class="btn btn-outline">Đại lý</a> -->
-      <!-- Replace phone / WhatsApp with your real contact -->
-      <a
-        href="tel:+84900000000"
-        class="btn btn-ghost"
-        aria-label="Call VierCycle"
-        >Gọi ngay</a
-      >
     </nav>
 
+    <section class="h-screen flex items-center relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-black to-transparent z-10"
+      ></div>
+      <div
+        class="absolute top-0 right-0 w-1/2 h-full bg-[url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070')] bg-cover opacity-20 grayscale"
+      ></div>
+
+      <div class="container mx-auto px-6 relative z-20" data-aos="fade-up">
+        <h1 class="text-7xl md:text-9xl font-black leading-none mb-6">
+          NEXT-GEN<br /><span class="text-vier">ESC & BMS</span>
+        </h1>
+        <p class="text-gray-400 max-w-xl text-lg mb-10 leading-relaxed">
+          Cung cấp giải pháp bộ não (Controller) và hệ thống quản lý năng lượng
+          (BMS) chuẩn Automotive cho các nhà sản xuất xe điện thông minh.
+        </p>
+        <div class="flex gap-6">
+          <a
+            href="#esc"
+            class="bg-vier text-black px-10 py-5 font-black uppercase text-sm tracking-widest hover:scale-105 transition"
+            >Discover Tech</a
+          >
+          <a
+            href="#partnership"
+            class="border border-white/20 px-10 py-5 font-black uppercase text-sm tracking-widest hover:bg-white hover:text-black transition"
+            >Partnership</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section id="esc" class="py-32 bg-[#0a0a0a]">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-20 items-center">
+          <div data-aos="fade-right">
+            <h2 class="text-5xl font-black mb-8 italic">
+              THE AIO <span class="text-vier">ESC</span>
+            </h2>
+            <p class="text-gray-400 mb-8 text-lg">
+              Electronic Speed Controller tích hợp thuật toán
+              <strong>AI PAS</strong> độc quyền, mang lại trải nghiệm đạp xe tự
+              nhiên và mạnh mẽ nhất.
+            </p>
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <i class="fas fa-microchip text-vier mt-1 text-xl"></i>
+                <div>
+                  <h4 class="font-bold text-lg">AI Power Assist (AI PAS)</h4>
+                  <p class="text-sm text-gray-500">
+                    Tự động bù moment xoắn dựa trên cảm biến độ nghiêng và gia
+                    tốc.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <i class="fas fa-shield-halved text-vier mt-1 text-xl"></i>
+                <div>
+                  <h4 class="font-bold text-lg">IP66 Protection</h4>
+                  <p class="text-sm text-gray-500">
+                    Vận hành bền bỉ trong mọi điều kiện thời tiết khắc nghiệt.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="relative" data-aos="zoom-in">
+            <div
+              class="w-full h-[400px] glass rounded-3xl flex items-center justify-center border-vier/20 border-2"
+            >
+              <i class="fas fa-bolt text-9xl text-vier/10 animate-pulse"></i>
+            </div>
+            <div class="absolute -bottom-10 -left-10 glass p-8 rounded-2xl">
+              <span class="text-4xl font-black text-vier">500W</span>
+              <p class="text-xs uppercase tracking-widest">Peak Power</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bms" class="py-32 bg-black border-y border-white/5">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-5xl font-black mb-16 italic" data-aos="fade-up">
+          ADVANCED <span class="text-vier">BMS</span> SOLUTIONS
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="glass p-10 rounded-3xl tech-card"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <i class="fas fa-battery-full text-4xl text-vier mb-6"></i>
+            <h3 class="font-black text-xl mb-4">Automotive Grade</h3>
+            <p class="text-sm text-gray-500 italic">
+              Quản lý 16 cell pin 21700 với độ chính xác cao nhất, kéo dài tuổi
+              thọ pin thêm 30%.
+            </p>
+          </div>
+          <div
+            class="glass p-10 rounded-3xl tech-card border-vier"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <i class="fas fa-angle-double-down text-4xl text-vier mb-6"></i>
+            <h3 class="font-black text-xl mb-4">Tilt Detection</h3>
+            <p class="text-sm text-gray-500 italic">
+              Cảm biến an toàn tự động ngắt nguồn khi xe nghiêng quá 45 độ, bảo
+              vệ người lái.
+            </p>
+          </div>
+          <div
+            class="glass p-10 rounded-3xl tech-card"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <i class="fas fa-mobile-screen-button text-4xl text-vier mb-6"></i>
+            <h3 class="font-black text-xl mb-4">VIER Cloud Connect</h3>
+            <p class="text-sm text-gray-500 italic">
+              Kết nối Bluetooth 5.0, cho phép chẩn đoán lỗi từ xa và cập nhật
+              Firmware qua App.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="partnership" class="py-32 bg-vier text-black">
+      <div
+        class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center"
+      >
+        <div data-aos="fade-right">
+          <h2 class="text-6xl font-black leading-none mb-8">
+            PARTNER WITH<br />VIERSKY
+          </h2>
+          <p class="text-lg font-medium mb-10">
+            Chúng tôi đang tìm kiếm các nhà sản xuất OEM, đại lý phân phối và
+            các đối tác R&D để cùng phát triển hệ sinh thái xe điện thông minh.
+          </p>
+          <div class="flex gap-4">
+            <div class="bg-black/10 p-6 rounded-xl flex-1">
+              <h4 class="font-black text-2xl">B2B</h4>
+              <p class="text-sm uppercase font-bold opacity-60">
+                OEM Solutions
+              </p>
+            </div>
+            <div class="bg-black/10 p-6 rounded-xl flex-1">
+              <h4 class="font-black text-2xl">B2B2C</h4>
+              <p class="text-sm uppercase font-bold opacity-60">Distribution</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-black text-white p-10 rounded-3xl shadow-2xl"
+          data-aos="fade-left"
+        >
+          <h3 class="text-2xl font-black mb-6 uppercase tracking-tighter">
+            Đăng ký hợp tác
+          </h3>
+          <form class="space-y-4">
+            <input
+              type="text"
+              placeholder="Họ và tên"
+              class="w-full bg-white/5 border border-white/10 p-4 rounded-lg focus:border-vier outline-none"
+            />
+            <input
+              type="email"
+              placeholder="Email doanh nghiệp"
+              class="w-full bg-white/5 border border-white/10 p-4 rounded-lg focus:border-vier outline-none"
+            />
+            <select
+              class="w-full bg-white/5 border border-white/10 p-4 rounded-lg focus:border-vier outline-none text-gray-400"
+            >
+              <option>Loại hình hợp tác</option>
+              <option>Sản xuất OEM</option>
+              <option>Đại lý phân phối</option>
+              <option>Hợp tác R&D</option>
+            </select>
+            <button
+              class="w-full bg-vier text-black p-4 rounded-lg font-black uppercase tracking-widest hover:bg-white transition mt-4"
+            >
+              Gửi yêu cầu
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="py-10 text-center border-t border-white/5 text-gray-600 text-[10px] uppercase tracking-[0.3em]"
+    >
+      © 2025 VIERSKY TECHNOLOGY | EMPOWERING MICRO MOBILITY
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      // Hide sticky CTA when #buy section is in view
-      (function () {
-        const bar = document.querySelector(".mobile-cta");
-        const target = document.querySelector("#buy");
-        if (!bar || !target) return;
-
-        const io = new IntersectionObserver(
-          (entries) => {
-            const entry = entries[0];
-            // If the buy section is at least ~45% visible, hide the sticky bar
-            if (entry.isIntersecting && entry.intersectionRatio > 0.45) {
-              bar.classList.add("hidden");
-            } else {
-              bar.classList.remove("hidden");
-            }
-          },
-          { threshold: [0, 0.45, 1] }
-        );
-
-        io.observe(target);
-
-        // Optional: hide while the mobile menu is open
-        const toggle = document.querySelector(".nav-toggle");
-        if (toggle) {
-          toggle.addEventListener("click", () => {
-            const expanded = toggle.getAttribute("aria-expanded") === "true";
-            bar.style.visibility = expanded ? "hidden" : "visible";
-          });
-        }
-      })();
-    </script>
-
-    <script>
-      // Mobile nav
-      const toggle = document.querySelector(".nav-toggle");
-      const nav = document.querySelector(".nav");
-      toggle.addEventListener("click", () => {
-        const open = toggle.getAttribute("aria-expanded") === "true";
-        toggle.setAttribute("aria-expanded", String(!open));
-        nav.classList.toggle("open");
-      });
-
-      // Year
-      document.getElementById("y").textContent = new Date().getFullYear();
-
-      // Counter animation
-      const nums = document.querySelectorAll(".stat-num");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const el = entry.target;
-            const target = +el.dataset.target;
-            let cur = 0;
-            const step = Math.ceil(target / 60);
-            const tick = () => {
-              cur += step;
-              if (cur >= target) {
-                el.textContent = target;
-                return;
-              }
-              el.textContent = cur;
-              requestAnimationFrame(tick);
-            };
-            tick();
-            observer.unobserve(el);
-          });
-        },
-        { threshold: 0.3 }
-      );
-      nums.forEach((n) => observer.observe(n));
-    </script>
-
-    <script>
-      // Video Reviews modal
-      (function () {
-        const modal = document.querySelector(".video-modal");
-        const frameWrap = document.querySelector(".video-modal__frame");
-        const closeBtn = document.querySelector(".video-modal__close");
-        const backdrop = document.querySelector(".video-modal__backdrop");
-        const buttons = document.querySelectorAll(".video-card .thumb");
-
-        const open = (src) => {
-          // Build iframe only when opened
-          frameWrap.innerHTML = `
-        <iframe
-          src="${src}?autoplay=1&rel=0"
-          title="VierKit video review"
-          loading="eager"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>`;
-          modal.classList.add("open");
-          modal.setAttribute("aria-hidden", "false");
-          document.body.style.overflow = "hidden";
-        };
-        const close = () => {
-          modal.classList.remove("open");
-          modal.setAttribute("aria-hidden", "true");
-          frameWrap.innerHTML = ""; // stop playback
-          document.body.style.overflow = "";
-        };
-
-        buttons.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const src = btn.dataset.video;
-            if (src) open(src);
-          });
-        });
-
-        [closeBtn, backdrop].forEach((el) =>
-          el.addEventListener("click", close)
-        );
-        window.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") close();
-        });
-      })();
-    </script>
-    <script>
-      (function () {
-        const root = document.querySelector(".hero-carousel");
-        if (!root) return;
-
-        const track = root.querySelector(".hc-track");
-        const slides = Array.from(root.querySelectorAll(".hc-slide"));
-        const prev = root.querySelector(".hc-prev");
-        const next = root.querySelector(".hc-next");
-        const dots = Array.from(root.querySelectorAll(".hc-dot"));
-        const total = slides.length;
-        let index = 0,
-          autoplay,
-          startX = 0,
-          curX = 0,
-          dragging = false;
-
-        function go(i, user = false) {
-          index = (i + total) % total;
-          track.style.transform = `translateX(-${index * 100}%)`;
-          dots.forEach((d, di) =>
-            d.setAttribute("aria-selected", di === index ? "true" : "false")
-          );
-          // reset autoplay on user interaction
-          if (user) {
-            stop();
-            start();
-          }
-        }
-        function nextSlide(user = false) {
-          go(index + 1, user);
-        }
-        function prevSlide(user = false) {
-          go(index - 1, user);
-        }
-
-        // Dots
-        dots.forEach((d, di) =>
-          d.addEventListener("click", () => go(di, true))
-        );
-
-        // Buttons
-        next.addEventListener("click", () => nextSlide(true));
-        prev.addEventListener("click", () => prevSlide(true));
-
-        // Keyboard
-        root.addEventListener("keydown", (e) => {
-          if (e.key === "ArrowRight") nextSlide(true);
-          if (e.key === "ArrowLeft") prevSlide(true);
-        });
-        root.tabIndex = 0; // focusable for keyboard
-
-        // Swipe
-        const vp = root.querySelector(".hc-viewport");
-        const onDown = (x) => {
-          dragging = true;
-          startX = x;
-          curX = x;
-          track.style.transition = "none";
-        };
-        const onMove = (x) => {
-          if (!dragging) return;
-          curX = x;
-          const dx = curX - startX;
-          track.style.transform = `translateX(calc(-${
-            index * 100
-          }% + ${dx}px))`;
-        };
-        const onUp = () => {
-          if (!dragging) return;
-          track.style.transition = "";
-          const dx = curX - startX;
-          const threshold = vp.clientWidth * 0.18;
-          if (dx < -threshold) nextSlide(true);
-          else if (dx > threshold) prevSlide(true);
-          else go(index, true);
-          dragging = false;
-        };
-        vp.addEventListener("pointerdown", (e) => {
-          vp.setPointerCapture(e.pointerId);
-          onDown(e.clientX);
-        });
-        vp.addEventListener("pointermove", (e) => onMove(e.clientX));
-        vp.addEventListener("pointerup", onUp);
-        vp.addEventListener("pointercancel", onUp);
-        vp.addEventListener("pointerleave", onUp);
-
-        // Autoplay
-        function start() {
-          autoplay = setInterval(() => nextSlide(false), 5000);
-        }
-        function stop() {
-          clearInterval(autoplay);
-        }
-        root.addEventListener("mouseenter", stop);
-        root.addEventListener("mouseleave", start);
-        start();
-
-        // Init
-        go(0);
-      })();
+      AOS.init({ duration: 1000, once: true });
     </script>
   </body>
 </html>
